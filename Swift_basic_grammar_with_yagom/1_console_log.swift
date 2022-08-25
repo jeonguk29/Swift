@@ -1,10 +1,10 @@
 /*
 이름짓기 규칙
-Lower Camel Case
+Lower Camel Case  (소문자)
 fuction, method, variable, constant
     ex someVariableName
 
-Upper Camel Case
+Upper Camel Case (대문자)
 type(class, struct, enum, extension…)
 
     ex Person, Point, Week
@@ -16,9 +16,9 @@ Swift는 모든 대소문자를 구분합니다.
 
 print 함수 : 단순 문자열 출력
 
-dump 함수 : 인스턴스의 자세한 설명(description 프로퍼티)까지 출력
+dump 함수 : 클레스의 인스턴스의 자세한 설명(description 프로퍼티)까지 출력
 
-문자열 보간법 : String Interpolation  => 프로그램 실행 중 문자열 내에 변수 또는 상수의 실질적인 값을 표현하기 위해 사용합니다.
+문자열 보관법 : String Interpolation  => 프로그램 실행 중 문자열 내에 변수 또는 상수의 실질적인 값을 표현하기 위해 사용합니다.
     ex  \()
 
 */

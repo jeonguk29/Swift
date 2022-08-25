@@ -50,7 +50,7 @@ if let name: String = yourName {
 
 // ,를 사용해 한 번에 여러 옵셔널을 바인딩 할 수 있습니다
 // 모든 옵셔널에 값이 있을 때만 동작합니다
-myName = "yagom"
+myName = "woogie"
 yourName = nil
 
 if let name = myName, let friend = yourName {
@@ -63,7 +63,7 @@ yourName = "hana"
 if let name = myName, let friend = yourName {
     print("\(name) and \(friend)")
 }
-// yagom and hana         이렇게 값 할당하면 실행됨 
+// woogie and hana         이렇게 값 할당하면 실행됨 
 
 
 

@@ -27,7 +27,7 @@ if someInteger < 100 {
 // 스위프트의 조건에는 항상 Bool 타입이 들어와야합니다
 // someInteger는 Bool 타입이 아닌 Int 타입이기 때문에
 // 컴파일 오류가 발생합니다
-//if someInteger { }   0 이 아니니까 True로 되겠지라고 생각하면 안돰
+//if someInteger { }   0 이 아니니까 True로 되겠지라고 생각하면 안됨
 
 
 /*
