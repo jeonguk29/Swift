@@ -18,9 +18,29 @@ C 언어 등의 구조체보다 다양한 기능
 
 값 타입
 swift의 대부분의 큰 뼈대는 모두 구조체로 구성 
+
+
+
+
+Enum 
+다른 언어의 열거형과 많이 다른 존재
+상속 불가
+(인스턴스/타입)메서드
+(인스턴스/타입) 연산 프로퍼티
+값 타입 
+Enumeration 약자
+유사한 종류의 여러값을 유의미한 이름으로 한 곳에 모아 정의
+예) 요일, 상태값, 월(Month)등
+
+열거형 자체가 하나의 데이터 타입
+열거형의 case 하나하나 전부 하나의 유의미한 값으로 취급
+
+선언 키워드 - enum
+
 */
 
-열거형과 구조체는 값 타입이며, 클래스는 참조 타입이라는 것이 가장 큰 차이입니다. 또한, 클래스는 상속이 가능하지만 구조체와 열거형은 상속이 불가능합니다.
+
+//열거형과 구조체는 값 타입이며, 클래스는 참조 타입이라는 것이 가장 큰 차이입니다. 또한, 클래스는 상속이 가능하지만 구조체와 열거형은 상속이 불가능합니다.
 
 struct ValueType {
     var property = 1
@@ -56,3 +76,5 @@ secondClassReference.property = 2
 // 첫 번째 클래스 인스턴스의 프로퍼티 값을 변경하게 됨
 print("first class reference property : \(firstClassReference.property)")    // 2
 print("second class reference property : \(secondClassReference.property)")  //
+
+// 값이 복사 되는게 아니라 참조값이 복사 되는 것이기 때문임 
