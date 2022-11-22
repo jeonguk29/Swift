@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         slider.setThumbImage(UIImage(imageLiteralResourceName: "slider_thumb.png"), for: .normal)
         // 슬라이더가 평소상태일때 아무때나 이 이미지 표시
         // 스토리보드가 모든걸 다 설정해줄수는 없음 간혹가다가 이렇게 코드로 설정해줘야 하는 경우가 있음 즉 스토리보드로 100% UI 만들기 어려움
+        
+        reset()
     }
     
     /* 문법정리
@@ -45,7 +47,12 @@ class ViewController: UIViewController {
     @IBAction func touchUpResetButton(_ sender:UIButton)
     {
         print("touch up Reset Button")
+        reset()
         
+    }
+    
+    func reset(){
+        print("reset!")
     }
 
 
