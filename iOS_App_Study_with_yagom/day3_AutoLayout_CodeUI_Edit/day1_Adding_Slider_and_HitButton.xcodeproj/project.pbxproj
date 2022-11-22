@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64586BC829280AAD00F240D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BC729280AAD00F240D7 /* AppDelegate.swift */; };
+		64586BCA29280AAD00F240D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BC929280AAD00F240D7 /* SceneDelegate.swift */; };
+		64586BCC29280AAD00F240D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BCB29280AAD00F240D7 /* ViewController.swift */; };
+		64586BCF29280AAD00F240D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64586BCD29280AAD00F240D7 /* Main.storyboard */; };
+		64586BD129280AAF00F240D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64586BD029280AAF00F240D7 /* Assets.xcassets */; };
+		64586BD429280AAF00F240D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64586BD229280AAF00F240D7 /* LaunchScreen.storyboard */; };
+		64586BDF29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BDE29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.swift */; };
+		64586BE929280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BE829280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.swift */; };
+		64586BEB29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BEA29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITestsLaunchTests.swift */; };
+		64586BF729280B2700F240D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BC729280AAD00F240D7 /* AppDelegate.swift */; };
+		64586BF829280B2800F240D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BC729280AAD00F240D7 /* AppDelegate.swift */; };
+		64586BF92928370500F240D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BCB29280AAD00F240D7 /* ViewController.swift */; };
+		64586BFA2928370500F240D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BCB29280AAD00F240D7 /* ViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64586BDB29280AAF00F240D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64586BBC29280AAD00F240D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64586BC329280AAD00F240D7;
+			remoteInfo = day1_Adding_Slider_and_HitButton;
+		};
+		64586BE529280AAF00F240D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64586BBC29280AAD00F240D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64586BC329280AAD00F240D7;
+			remoteInfo = day1_Adding_Slider_and_HitButton;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		64586BC429280AAD00F240D7 /* day1_Adding_Slider_and_HitButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = day1_Adding_Slider_and_HitButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64586BC729280AAD00F240D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 0; };
+		64586BC929280AAD00F240D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		64586BCB29280AAD00F240D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64586BCE29280AAD00F240D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64586BD029280AAF00F240D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64586BD329280AAF00F240D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64586BD529280AAF00F240D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64586BDA29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = day1_Adding_Slider_and_HitButtonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64586BDE29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day1_Adding_Slider_and_HitButtonTests.swift; sourceTree = "<group>"; };
+		64586BE429280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = day1_Adding_Slider_and_HitButtonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64586BE829280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day1_Adding_Slider_and_HitButtonUITests.swift; sourceTree = "<group>"; };
+		64586BEA29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day1_Adding_Slider_and_HitButtonUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64586BC129280AAD00F240D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64586BD729280AAF00F240D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64586BE129280AAF00F240D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64586BBB29280AAD00F240D7 = {
+			isa = PBXGroup;
+			children = (
+				64586BC629280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */,
+				64586BDD29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests */,
+				64586BE729280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests */,
+				64586BC529280AAD00F240D7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64586BC529280AAD00F240D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64586BC429280AAD00F240D7 /* day1_Adding_Slider_and_HitButton.app */,
+				64586BDA29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.xctest */,
+				64586BE429280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64586BC629280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */ = {
+			isa = PBXGroup;
+			children = (
+				64586BC729280AAD00F240D7 /* AppDelegate.swift */,
+				64586BC929280AAD00F240D7 /* SceneDelegate.swift */,
+				64586BCB29280AAD00F240D7 /* ViewController.swift */,
+				64586BCD29280AAD00F240D7 /* Main.storyboard */,
+				64586BD029280AAF00F240D7 /* Assets.xcassets */,
+				64586BD229280AAF00F240D7 /* LaunchScreen.storyboard */,
+				64586BD529280AAF00F240D7 /* Info.plist */,
+			);
+			path = day1_Adding_Slider_and_HitButton;
+			sourceTree = "<group>";
+		};
+		64586BDD29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests */ = {
+			isa = PBXGroup;
+			children = (
+				64586BDE29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.swift */,
+			);
+			path = day1_Adding_Slider_and_HitButtonTests;
+			sourceTree = "<group>";
+		};
+		64586BE729280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests */ = {
+			isa = PBXGroup;
+			children = (
+				64586BE829280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.swift */,
+				64586BEA29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITestsLaunchTests.swift */,
+			);
+			path = day1_Adding_Slider_and_HitButtonUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64586BC329280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64586BEE29280AAF00F240D7 /* Build configuration list for PBXNativeTarget "day1_Adding_Slider_and_HitButton" */;
+			buildPhases = (
+				64586BC029280AAD00F240D7 /* Sources */,
+				64586BC129280AAD00F240D7 /* Frameworks */,
+				64586BC229280AAD00F240D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = day1_Adding_Slider_and_HitButton;
+			productName = day1_Adding_Slider_and_HitButton;
+			productReference = 64586BC429280AAD00F240D7 /* day1_Adding_Slider_and_HitButton.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64586BD929280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64586BF129280AAF00F240D7 /* Build configuration list for PBXNativeTarget "day1_Adding_Slider_and_HitButtonTests" */;
+			buildPhases = (
+				64586BD629280AAF00F240D7 /* Sources */,
+				64586BD729280AAF00F240D7 /* Frameworks */,
+				64586BD829280AAF00F240D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64586BDC29280AAF00F240D7 /* PBXTargetDependency */,
+			);
+			name = day1_Adding_Slider_and_HitButtonTests;
+			productName = day1_Adding_Slider_and_HitButtonTests;
+			productReference = 64586BDA29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		64586BE329280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64586BF429280AAF00F240D7 /* Build configuration list for PBXNativeTarget "day1_Adding_Slider_and_HitButtonUITests" */;
+			buildPhases = (
+				64586BE029280AAF00F240D7 /* Sources */,
+				64586BE129280AAF00F240D7 /* Frameworks */,
+				64586BE229280AAF00F240D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64586BE629280AAF00F240D7 /* PBXTargetDependency */,
+			);
+			name = day1_Adding_Slider_and_HitButtonUITests;
+			productName = day1_Adding_Slider_and_HitButtonUITests;
+			productReference = 64586BE429280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64586BBC29280AAD00F240D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1410;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					64586BC329280AAD00F240D7 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+					64586BD929280AAF00F240D7 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 64586BC329280AAD00F240D7;
+					};
+					64586BE329280AAF00F240D7 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 64586BC329280AAD00F240D7;
+					};
+				};
+			};
+			buildConfigurationList = 64586BBF29280AAD00F240D7 /* Build configuration list for PBXProject "day1_Adding_Slider_and_HitButton" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64586BBB29280AAD00F240D7;
+			productRefGroup = 64586BC529280AAD00F240D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64586BC329280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */,
+				64586BD929280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests */,
+				64586BE329280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64586BC229280AAD00F240D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64586BD429280AAF00F240D7 /* LaunchScreen.storyboard in Resources */,
+				64586BD129280AAF00F240D7 /* Assets.xcassets in Resources */,
+				64586BCF29280AAD00F240D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64586BD829280AAF00F240D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64586BE229280AAF00F240D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64586BC029280AAD00F240D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64586BCC29280AAD00F240D7 /* ViewController.swift in Sources */,
+				64586BC829280AAD00F240D7 /* AppDelegate.swift in Sources */,
+				64586BCA29280AAD00F240D7 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64586BD629280AAF00F240D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64586BF92928370500F240D7 /* ViewController.swift in Sources */,
+				64586BF729280B2700F240D7 /* AppDelegate.swift in Sources */,
+				64586BDF29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64586BE029280AAF00F240D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64586BF829280B2800F240D7 /* AppDelegate.swift in Sources */,
+				64586BE929280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITests.swift in Sources */,
+				64586BFA2928370500F240D7 /* ViewController.swift in Sources */,
+				64586BEB29280AAF00F240D7 /* day1_Adding_Slider_and_HitButtonUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64586BDC29280AAF00F240D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64586BC329280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */;
+			targetProxy = 64586BDB29280AAF00F240D7 /* PBXContainerItemProxy */;
+		};
+		64586BE629280AAF00F240D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64586BC329280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */;
+			targetProxy = 64586BE529280AAF00F240D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		64586BCD29280AAD00F240D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64586BCE29280AAD00F240D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		64586BD229280AAF00F240D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64586BD329280AAF00F240D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64586BEC29280AAF00F240D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64586BED29280AAF00F240D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64586BEF29280AAF00F240D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = day1_Adding_Slider_and_HitButton/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "woogie.day1-Adding-Slider-and-HitButton";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64586BF029280AAF00F240D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = day1_Adding_Slider_and_HitButton/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "woogie.day1-Adding-Slider-and-HitButton";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64586BF229280AAF00F240D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "woogie.day1-Adding-Slider-and-HitButtonTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/day1_Adding_Slider_and_HitButton.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/day1_Adding_Slider_and_HitButton";
+			};
+			name = Debug;
+		};
+		64586BF329280AAF00F240D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "woogie.day1-Adding-Slider-and-HitButtonTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/day1_Adding_Slider_and_HitButton.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/day1_Adding_Slider_and_HitButton";
+			};
+			name = Release;
+		};
+		64586BF529280AAF00F240D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "woogie.day1-Adding-Slider-and-HitButtonUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = day1_Adding_Slider_and_HitButton;
+			};
+			name = Debug;
+		};
+		64586BF629280AAF00F240D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "woogie.day1-Adding-Slider-and-HitButtonUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = day1_Adding_Slider_and_HitButton;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64586BBF29280AAD00F240D7 /* Build configuration list for PBXProject "day1_Adding_Slider_and_HitButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64586BEC29280AAF00F240D7 /* Debug */,
+				64586BED29280AAF00F240D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64586BEE29280AAF00F240D7 /* Build configuration list for PBXNativeTarget "day1_Adding_Slider_and_HitButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64586BEF29280AAF00F240D7 /* Debug */,
+				64586BF029280AAF00F240D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64586BF129280AAF00F240D7 /* Build configuration list for PBXNativeTarget "day1_Adding_Slider_and_HitButtonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64586BF229280AAF00F240D7 /* Debug */,
+				64586BF329280AAF00F240D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64586BF429280AAF00F240D7 /* Build configuration list for PBXNativeTarget "day1_Adding_Slider_and_HitButtonUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64586BF529280AAF00F240D7 /* Debug */,
+				64586BF629280AAF00F240D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64586BBC29280AAD00F240D7 /* Project object */;
+}
