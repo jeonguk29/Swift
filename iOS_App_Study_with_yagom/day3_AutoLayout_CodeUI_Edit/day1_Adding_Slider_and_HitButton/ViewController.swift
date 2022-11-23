@@ -8,8 +8,23 @@
 import UIKit
 
 class ViewController: UIViewController {
+    /*
+     
+    변수와 상수의 저장은 임시적 프로그램 종료되면 사라짐
+     변수와 상수는 {} 안에서 유효함
+     */
     
+    var randomValue: Int = 0 // 게임 시작시 사용자가 맞춰야할 임의에 정답 숫자
+    var tryCount: Int = 0
+    
+    // 변경 UI 요소는 이렇게 코드 변수로 가져옴
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var tryCountLable: UILabel! // 몇번 시도했는지 UI
+    @IBOutlet weak var sliderValueLabel: UILabel! // 슬라이더 현제 위치 값 표시 라벨
+    @IBOutlet weak var minimumValueLabel: UILabel! // 슬라이더 최소 값 표시 라벨
+    @IBOutlet weak var maximumValueLabel: UILabel! // 슬라이더 최대 값 표시 라벨
+    //!!! 변수 즉 아울렛이던 액션 이름이던 바꿀때는 우클릭 리팩터로 바꿔 주기 그래야 다른 곳 적용된 이름들도 다 바뀜
+    
     
     // Actions and Outlet
     
@@ -33,6 +48,8 @@ class ViewController: UIViewController {
      viewDidLoad() 이렇게 사용하면 함수 호출 즉 사용 하겠다는 것임
      */
     
+   
+    
     @IBAction func sliderValueChanged(_ sender: UISlider)
     {
         print(sender.value)
@@ -47,12 +64,26 @@ class ViewController: UIViewController {
     @IBAction func touchUpResetButton(_ sender:UIButton)
     {
         print("touch up Reset Button")
-        reset()
+        reset() // 리셋 버튼 누르면 리셋 함수 실행
         
     }
     
     func reset(){
         print("reset!")
+        // 초기화시 임의의 정답 값 및 도전 횟수 라벨 값 변수값 변경
+        randomValue = Int.random(in: 0...30) // 0에서 30 사이에 임의에 값을 넣겠음
+        print(randomValue)
+        tryCount = 0
+        tryCountLable.text = "0 / 5"
+        // 초기화시 연결된 슬라이드 값 변경
+        slider.minimumValue = 0
+        slider.maximumValue = 30
+        slider.value = 15
+        // 초기회시 연결된 라벨 텍스트 변경
+        minimumValueLabel.text = "0"
+        maximumValueLabel.text = "30"
+        sliderValueLabel.text = "15"
+        
     }
 
 

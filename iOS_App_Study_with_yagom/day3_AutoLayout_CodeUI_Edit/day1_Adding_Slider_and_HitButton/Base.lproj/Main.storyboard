@@ -123,7 +123,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maximumValueLabel" destination="y7B-fo-RUc" id="bew-GB-Aob"/>
+                        <outlet property="minimumValueLabel" destination="BZG-YE-t3o" id="sP6-jr-NpL"/>
                         <outlet property="slider" destination="f6y-pT-Y0q" id="7bI-a2-iJu"/>
+                        <outlet property="sliderValueLabel" destination="q9N-yp-37s" id="Whx-hJ-r2v"/>
+                        <outlet property="tryCountLable" destination="KpX-qB-1xb" id="XUC-84-hAW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
