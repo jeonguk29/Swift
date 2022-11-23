@@ -53,11 +53,23 @@ class ViewController: UIViewController {
     @IBAction func sliderValueChanged(_ sender: UISlider)
     {
         print(sender.value)
+        let integerValue: Int = Int(slider.value) // 슬라이더 벨류 Float 실수형을 인트형 변환후 인트형 변수에 저장
+        sliderValueLabel.text = String(integerValue) // 사용자에게 소숫점 자리는 보이지 않게 하기
     }
     
     @IBAction func touchUpHitButton(_ sender:UIButton)
     {
         print(slider.value)
+        let hitValue: Int = Int(slider.value)
+        slider.value = Float(hitValue) // 사용자가 입력 버튼 누르면 슬라이더의 소숫점 값을 버리고 그와 유사한 Int 값에 위치 시키기 위해 이런식으로 값을 바꿔줌
+        
+        tryCount = tryCount + 1
+        // tryCountLable.text = String(tryCount) + " / 5"
+        tryCountLable.text = "\(tryCount) / 5" // 문자열 보관법 위에 코드랑 같지만 이렇게 보는게 더 직관적으로 이해하기 쉬움
+        
+        if randomValue == hitValue{ // 만약 임의의 숫자와 내가 선택한 숫자가 맞다면 표시
+            print("YOU HIT!!")
+        }
         
     }
     
