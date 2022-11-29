@@ -57,6 +57,16 @@ class ViewController: UIViewController {
         sliderValueLabel.text = String(integerValue) // 사용자에게 소숫점 자리는 보이지 않게 하기
     }
     
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.reset()
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func touchUpHitButton(_ sender:UIButton)
     {
         print(slider.value)
@@ -68,7 +78,20 @@ class ViewController: UIViewController {
         tryCountLable.text = "\(tryCount) / 5" // 문자열 보관법 위에 코드랑 같지만 이렇게 보는게 더 직관적으로 이해하기 쉬움
         
         if randomValue == hitValue{ // 만약 임의의 숫자와 내가 선택한 숫자가 맞다면 표시
-            print("YOU HIT!!")
+            //print("YOU HIT!!")
+            showAlert(message: "YOU HIT!!")
+            reset() // 호출해서 다시 리셋후 코드 종료
+            
+        }else if tryCount >= 5 { // 위가 거짓이고 5번 이하면
+            //print("You lose...")
+            showAlert(message: "You lose...")
+            reset()
+        }else if randomValue > hitValue { // 위 두 조건 다 거짓이면
+            slider.minimumValue = Float(hitValue)
+            minimumValueLabel.text = String(hitValue)
+        }else  { // 위 3 조건 다 거짓이면 즉 randomValue < hitValue 일때
+            slider.maximumValue = Float(hitValue)
+            maximumValueLabel.text = String(hitValue)
         }
         
     }
