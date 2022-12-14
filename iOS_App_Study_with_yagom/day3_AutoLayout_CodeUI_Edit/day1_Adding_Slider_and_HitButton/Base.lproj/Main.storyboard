@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="landscape" appearance="light"/>
+    <device id="retina6_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="day1_Adding_Slider_and_HitButton" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="f6y-pT-Y0q">
-                                <rect key="frame" x="105" y="181.66666666666666" width="642" height="31"/>
+                                <rect key="frame" x="105" y="180" width="634" height="31"/>
                                 <color key="tintColor" systemColor="linkColor"/>
                                 <color key="minimumTrackTintColor" systemColor="placeholderTextColor"/>
                                 <color key="maximumTrackTintColor" systemColor="placeholderTextColor"/>
@@ -26,7 +27,7 @@
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKE-si-keM">
-                                <rect key="frame" x="689" y="14.666666666666664" width="58" height="38"/>
+                                <rect key="frame" x="681" y="14.666666666666664" width="58" height="38"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="memories" catalog="system">
@@ -40,31 +41,31 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess the Random Number!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsv-CL-9KJ">
-                                <rect key="frame" x="282" y="20" width="288" height="27"/>
+                                <rect key="frame" x="278" y="20" width="288" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9N-yp-37s">
-                                <rect key="frame" x="416.66666666666669" y="120.66666666666669" width="19" height="21"/>
+                                <rect key="frame" x="412.66666666666669" y="119" width="19" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZG-YE-t3o">
-                                <rect key="frame" x="70" y="186" width="21" height="21"/>
+                                <rect key="frame" x="70" y="184.66666666666666" width="21" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7B-fo-RUc">
-                                <rect key="frame" x="761" y="186" width="21" height="21"/>
+                                <rect key="frame" x="753" y="184.66666666666666" width="21" height="21"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpX-qB-1xb">
-                                <rect key="frame" x="412.66666666666669" y="330.66666666666669" width="27" height="20.333333333333314"/>
+                                <rect key="frame" x="408.66666666666669" y="327.66666666666669" width="27" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -80,10 +81,11 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="touchUpResetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uFQ-zx-kc8"/>
+                                    <segue destination="WB4-Bh-7hb" kind="presentation" id="9iG-nX-z7K"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyY-9e-UQo">
-                                <rect key="frame" x="388.66666666666669" y="227.66666666666666" width="75" height="54.999999999999972"/>
+                                <rect key="frame" x="384.66666666666669" y="226" width="75" height="55"/>
                                 <color key="tintColor" systemColor="systemYellowColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="checkmark.circle" catalog="system">
@@ -134,11 +136,76 @@
             </objects>
             <point key="canvasLocation" x="32.394366197183103" y="-28.244274809160306"/>
         </scene>
+        <!--Credit View Controller-->
+        <scene sceneID="ifE-7n-RcF">
+            <objects>
+                <viewController id="WB4-Bh-7hb" customClass="CreditViewController" customModule="day1_Adding_Slider_and_HitButton" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MfN-Bu-Fh6">
+                        <rect key="frame" x="0.0" y="0.0" width="844" height="390"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwi-qk-mhh">
+                                <rect key="frame" x="329" y="20" width="495" height="350"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">안녕하세요 iOS 개발자를 꿈꾸는 정정욱이라고 합니다 .
+깃허브 주소는 https://github.com/jeonguk29 입니다.
+
+그 외 일상 소통은 인스타그램 : aloe_jk</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lya-TJ-0oH">
+                                <rect key="frame" x="30" y="20" width="67" height="54.666666666666657"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="arrowshape.turn.up.backward" catalog="system" symbolScale="default"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="font" scale="large">
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                    </preferredSymbolConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="touchUpDismissButton:" destination="WB4-Bh-7hb" eventType="touchUpInside" id="hLt-1Q-3hR"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="E7q-EA-gU6">
+                                <rect key="frame" x="30" y="70" width="270" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="RBc-kX-rdU"/>
+                                    <constraint firstAttribute="height" constant="250" id="mGg-Uo-bJb"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RrM-iE-9yQ"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="E7q-EA-gU6" firstAttribute="leading" secondItem="lya-TJ-0oH" secondAttribute="leading" id="1Kk-6g-Pkg"/>
+                            <constraint firstItem="E7q-EA-gU6" firstAttribute="top" secondItem="lya-TJ-0oH" secondAttribute="bottom" constant="8.6666666666666856" id="RC1-PU-oQ0"/>
+                            <constraint firstItem="pwi-qk-mhh" firstAttribute="top" secondItem="MfN-Bu-Fh6" secondAttribute="top" constant="20" id="Tny-Jm-KVc"/>
+                            <constraint firstAttribute="bottom" secondItem="pwi-qk-mhh" secondAttribute="bottom" constant="20" id="WI4-Cz-6Ge"/>
+                            <constraint firstItem="pwi-qk-mhh" firstAttribute="trailing" secondItem="MfN-Bu-Fh6" secondAttribute="trailingMargin" id="h7L-k7-Be1"/>
+                            <constraint firstItem="pwi-qk-mhh" firstAttribute="leading" secondItem="E7q-EA-gU6" secondAttribute="trailing" constant="29" id="ifm-6o-wKu"/>
+                            <constraint firstItem="E7q-EA-gU6" firstAttribute="centerY" secondItem="MfN-Bu-Fh6" secondAttribute="centerY" id="oNM-j8-niZ"/>
+                            <constraint firstItem="lya-TJ-0oH" firstAttribute="leading" secondItem="RrM-iE-9yQ" secondAttribute="leading" constant="30" id="wTk-5d-oqN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cnt-Be-WL1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773.94366197183103" y="-28.244274809160306"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.backward" catalog="system" width="128" height="104"/>
         <image name="checkmark.circle" catalog="system" width="128" height="123"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
+        <image name="me" width="1152" height="1440"/>
         <image name="memories" catalog="system" width="128" height="112"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -147,6 +214,9 @@
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

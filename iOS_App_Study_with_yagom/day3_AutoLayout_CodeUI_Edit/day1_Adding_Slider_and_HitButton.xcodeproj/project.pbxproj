@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64424BED2935A7EC00A5A960 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64424BEC2935A7EC00A5A960 /* CreditViewController.swift */; };
 		64586BC829280AAD00F240D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BC729280AAD00F240D7 /* AppDelegate.swift */; };
 		64586BCA29280AAD00F240D7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BC929280AAD00F240D7 /* SceneDelegate.swift */; };
 		64586BCC29280AAD00F240D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64586BCB29280AAD00F240D7 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64424BEC2935A7EC00A5A960 /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
 		64586BC429280AAD00F240D7 /* day1_Adding_Slider_and_HitButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = day1_Adding_Slider_and_HitButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64586BC729280AAD00F240D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; usesTabs = 0; };
 		64586BC929280AAD00F240D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		64586BC629280AAD00F240D7 /* day1_Adding_Slider_and_HitButton */ = {
 			isa = PBXGroup;
 			children = (
+				64424BEC2935A7EC00A5A960 /* CreditViewController.swift */,
 				64586BC729280AAD00F240D7 /* AppDelegate.swift */,
 				64586BC929280AAD00F240D7 /* SceneDelegate.swift */,
 				64586BCB29280AAD00F240D7 /* ViewController.swift */,
@@ -265,6 +268,7 @@
 				64586BCC29280AAD00F240D7 /* ViewController.swift in Sources */,
 				64586BC829280AAD00F240D7 /* AppDelegate.swift in Sources */,
 				64586BCA29280AAD00F240D7 /* SceneDelegate.swift in Sources */,
+				64424BED2935A7EC00A5A960 /* CreditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +450,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KA6J79S24;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = day1_Adding_Slider_and_HitButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -453,6 +458,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,6 +480,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5KA6J79S24;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = day1_Adding_Slider_and_HitButton/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -481,6 +488,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
