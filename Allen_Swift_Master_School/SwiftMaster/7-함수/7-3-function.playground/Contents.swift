@@ -228,10 +228,12 @@ numberPrint(n: 3)
 
 // 함수의 표기법(함수를 지칭시)
 
-// 1) 파라미터가 없는 경우, ()를 삭제
+// 1) 파라미터가 없는 경우, ()를 삭제 : 즉 생략하는게 약속임
 
 doSomething
 
+var test = doSomething
+test() // 이렇게 함수를 담아서 변수가 함수와 같은 기능을 하는것도 가능
 
 
 // 2) 아규먼트 레이블이 있는 경우, 아규먼트 레이블까지를 함수의 이름으로 봄
@@ -242,7 +244,7 @@ numberPrint(n:)        //  "numberPrint n 함수이다."
 
 // 3) 파라미터가 여러개인 경우, 콤마없이 아규먼트이름과 콜론을 표기
 
-chooseStepFunction(backward:value:)
+chooseStepFunction(backward:value:) // 즉 함수를 부를때 매겨변수 이름까지 같이 불러서 말함 ~~ 백워드 벨류 함수에요
 
 
 
