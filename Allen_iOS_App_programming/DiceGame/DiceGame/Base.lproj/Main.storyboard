@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DiceGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n3P-W4-eUO">
-                                <rect key="frame" x="136.66666666666666" y="698" width="119.99999999999997" height="40"/>
+                                <rect key="frame" x="135" y="690" width="120" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="T3x-CC-5dU"/>
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DICE GAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbt-Pu-P2y">
-                                <rect key="frame" x="121.66666666666669" y="139" width="150" height="30"/>
+                                <rect key="frame" x="120" y="127" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="do3-p8-i2K"/>
                                     <constraint firstAttribute="height" constant="30" id="qrk-1f-KzP"/>
@@ -44,16 +44,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IcI-r3-4ug">
-                                <rect key="frame" x="20" y="341.66666666666669" width="353" height="169"/>
+                                <rect key="frame" x="20" y="338.33333333333331" width="350" height="167.33333333333331"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black1" translatesAutoresizingMaskIntoConstraints="NO" id="oLy-Ud-9OZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="169" height="169"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="167.33333333333334"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oLy-Ud-9OZ" secondAttribute="height" multiplier="1:1" id="UZl-Mh-Hil"/>
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black1" translatesAutoresizingMaskIntoConstraints="NO" id="cvg-C4-fTq">
-                                        <rect key="frame" x="184" y="0.0" width="169" height="169"/>
+                                        <rect key="frame" x="182.66666666666663" y="0.0" width="167.33333333333337" height="167.33333333333334"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="cvg-C4-fTq" secondAttribute="height" multiplier="1:1" id="nEp-BL-Zqm"/>
                                         </constraints>
