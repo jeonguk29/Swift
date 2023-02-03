@@ -92,9 +92,13 @@ let task = session.dataTask(with: url) { (data, response, error) in
     }
     
     // 데이터를 그냥 한번 출력해보기
-    print(String(decoding: safeData, as: UTF8.self))      // 데이터를 문자열로 출력하는 코드
+    //print(String(decoding: safeData, as: UTF8.self))      // 데이터를 문자열로 출력하는 코드
     
-   // dump(parseJSON1(safeData)!)
+    
+//    var moiveArray = parseJSON1(safeData) // 배열로 결과가 나올 것임
+//    print(moiveArray!)
+    
+    dump(parseJSON1(safeData)!) // 프린트랑 똑같지만 데이터를 좀더 보기 쉽게 자세하게 출력해줌
     
     
 }
@@ -188,14 +192,23 @@ func parseJSON1(_ movieData: Data) -> [DailyBoxOfficeList]? {
         // 자동으로 원하는 클래스/구조체 형태로 분석
         // JSONDecoder
         let decoder = JSONDecoder()
+        // JSONDecoder 뭔가 있는 데이터를 코드로 변환
         
         let decodedData = try decoder.decode(MovieData.self, from: movieData)
-
+        // decode 메서드에 우리가 변형하고 싶은 형태를 넣어주면 됨 MovieData.self 이렇게 넣으면 되는데.self를 붙여줘야함
+        // 즉 붕어빵이 아니고 붕어빵틀을 의미하게 되는 것임 즉 붕어빵틀의 형태로 변형 하고 싶다
+        // movieData데이터를 받아서 MovieData.self 우리가 원하는 붕어빵틀 형태로 변환
+        // decode 는 에러를 반활 할수 있는 메서드임
+        //try decoder.decode(<#T##type: Decodable.Protocol##Decodable.Protocol#>, from: <#T##Data#>)
+        //그리고 Decodable 프로토콜을 채택한 타입을 넣을수 있는 것임
+        
+        
         return decodedData.boxOfficeResult.dailyBoxOfficeList
+        // 이 리턴은 결과 적으로 배열이 됨 그리고 리턴에 옵셔널이 붙은 이유는 위 코드 에러시
         
     } catch {
         
-        return nil
+        return nil  // 여기서 nil을 반환 하기 때문임
     }
     
 }
@@ -214,6 +227,7 @@ func parseJSON2(_ movieData: Data) -> [DailyBoxOfficeList]? {
         // 딕셔너리 형태로 분석
         // JSONSerialization
         if let json = try JSONSerialization.jsonObject(with: movieData) as? [String: Any] {
+            // 딕셔너리 형태로 타입캐스팅해서 사용했음
             if let boxOfficeResult = json["boxOfficeResult"] as? [String: Any] {
                 if let dailyBoxOfficeList = boxOfficeResult["dailyBoxOfficeList"] as? [[String: Any]] {
                     
@@ -251,6 +265,7 @@ func parseJSON2(_ movieData: Data) -> [DailyBoxOfficeList]? {
 
 // 서버에서 주는 데이터의 형태 ====================================================
 
+// JSON 코드를 보면 계층적 구조임 그렇기 때문에 코드생성시 아래와 같이 구조체를 계층적으로 생성해줌
 struct MovieData: Codable {
     let boxOfficeResult: BoxOfficeResult
 }
@@ -269,7 +284,15 @@ struct DailyBoxOfficeList: Codable {
     let openDt: String
 }
 
-
+/*
+ Decodable, Encodable 이라는 프로토콜이 있음
+ Decodable 프로토콜을 채택해야지 JSONDecoder()에서 코드를 자동으로 분석 할 수 있음
+ Decodable은 데이터를 코드로 변형시키는 녀석이고 Encodable은 구조체나 클래스를 데이터형태로 변형시켜주는 프로토콜임
+ 
+ Decodable + Encodable 이두개를 합한게 => Codable이라는 프로토콜로 명령이 되어 있음
+ 그래서 Codable 하나만 채택하면 둘다 채택을 하는 것임 어쨋든 이걸 채택해야지만 자동으로 코드 분석해줌
+ 
+ */
 
 
 
