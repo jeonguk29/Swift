@@ -19,6 +19,7 @@ private class SomePrivateClass {                    // 명시적인 private 선�
     var someFilePrivateProperty = "SomeFilePrivate"
     private var somePrivateProperty = "SomePrivate"
 }
+// 다 fileprivate 로 동작 할것임    private 빼고
 
 
 

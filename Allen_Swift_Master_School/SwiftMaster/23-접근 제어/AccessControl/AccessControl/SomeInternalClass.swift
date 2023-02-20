@@ -14,3 +14,5 @@ class SomeInternalClass {                          // 암시적인 internal 선�
     fileprivate var someFilePrivateProperty = "SomeFilePrivate"
     private var somePrivateProperty = "SomePrivate"
 }
+
+// internal 보다 낮은 수준은 internal로 동작

@@ -14,3 +14,4 @@ public class SomePublicClass {                  // 명시적인 public 선언
     fileprivate var someFilePrivateProperty = "SomeFilePrivate"
     private var somePrivateProperty = "SomePrivate"
 }
+//public 보다 낮은 수준은 public으로 동작 
