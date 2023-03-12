@@ -6,10 +6,12 @@
 //
 
 import UIKit
-
+// 😆 코드 분석 ViewController 클래스는 UIViewController를 상속받아 만들었다.
 class ViewController: UIViewController {
     
-    
+    // 😆 코드 분석
+    //@IBOutlet 스토리보드에서 연결한 두 속성 변수가 있다.
+     
     @IBOutlet weak var firstImageView: UIImageView!
     
     @IBOutlet weak var secondImageView: UIImageView!
@@ -24,6 +26,8 @@ class ViewController: UIViewController {
     // 앱의 화면에 들어오면 가장 먼저 실행되는 함수
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 😆 코드 분석
+        //@IBOutlet 스토리보드에서 연결한 두 속성 변수를 수정
         firstImageView.image = diceArray[1]
         secondImageView.image = diceArray[1]
       

@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     
+    //😆코드 분석 아래 변수는 현제 ViewController 클래스 안에 속성을 만든것임
+    
     // 컴퓨터가 랜덤으로 숫자 선택
     var comNumber = Int.random(in: 1...10) // 이코드가 viewDidLoad() 에 있으면 안되는 이유 viewDidLoad() 또한 함수라 스택에 올라가서 사라지면 끝남 우리는 이 값을 앱 전역에서 가지고 놀기위해 여기다 선언 하는것임
 
@@ -49,8 +51,11 @@ class ViewController: UIViewController {
         
         // 또 다른 방법 제시
         // 숫자레이블에 있는 문자열 가져오기(옵셔널 벗기기)
-        guard let myNumSting = numberLabel.text else { return }
-        guard let myNumber = Int(myNumSting) else { return }
+// 😆 코드분석 가드문 같은경우도 이전 iflet 바인딩을 한번에 두번 처리하는게 가능했던거 처럼 이렇게 가능함
+        guard let myNumSting = numberLabel.text, let myNumber = Int(myNumSting) else { return }
+        
+//        guard let myNumSting = numberLabel.text else { return }
+//        guard let myNumber = Int(myNumSting) else { return }
         
         // 1 컴퓨터의 숫자와 내가 선택한 숫자를 비교 UP / Down / Bingo (메인 레이블)
         

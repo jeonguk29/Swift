@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     //변수 / 속성 (class 관점에서)
     
+    // 😆 코드분석
+    // 아래와 같이 스토리보드의 물체들 오브젝트들이 변수와 연결 되어있음
     @IBOutlet weak var mainLabel: UILabel!
     
     @IBOutlet weak var comImageView: UIImageView!
@@ -53,6 +55,7 @@ class ViewController: UIViewController {
         
         let title = sender.currentTitle! // 이렇게 사용하려면 버튼들이 default로 설정되어 있어야함 plain으로 되어 있으면 재대로 못가져옴
         
+        // 😆 코드분석 title이 문자열이기 때문에 default가 필요한 것임 가위, 바위, 보 말고 다른 문자열일 수도 있기 때문임 물론 우리는 아닐걸 알지만..
         switch title {
         case "가위" :
             myChoice = Rps.scissors
@@ -70,6 +73,8 @@ class ViewController: UIViewController {
     @IBAction func selectButtonTapped(_ sender: UIButton) {
         // 1) 컴퓨터가 랜덤 선택한 것을 이미지뷰에 표시
         // 2) 컴퓨터가 랜덤 선택한 것을 레이블에 표시
+        
+        // 😆 코드분석 Enum에 대한 switch 문이라 default 이 필요없음 우리가 만드럐대 딱 3가지 case만 만들었기 때문임
         switch comChoice {
         case Rps.rock:
             comImageView.image = #imageLiteral(resourceName: "rock")
