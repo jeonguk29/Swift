@@ -31,6 +31,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // ⭐️ ViewController에 즉 상위에 정의 된 메서드임 다른 부분 선택시 키보드 내려가게
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true) // 다른 부분 선택시 뷰를 끝내겠다.
+        //textField.resignFirstResponder() // 사실 이코드랑 비슷함
+        // 위는 뷰 전체를 종료 아래는 텍스트필드를 종료
+    }
+    
     // 😆 UITextFieldDelegate라는 자격증을 채택했는데 빨간줄이 없음 필수적 구현이 아니라
     // 현제 선택적 구현으로 되어 있는것임
     // 아래 코드도 우리가 UITextFieldDelegate 를 채택해서 선택적 구현한 것임
@@ -55,9 +62,34 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     // 텍스트필드 글자 내용이 (한글자 한글자) 입력 되거나 지워질때 호출이 되고 (허락)
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(#function)
-        print(string)
-        return true
+//        print(#function)
+//        print(string)
+        
+//        let maxLength = 10
+//            let currentString: NSString = (textField.text ?? "") as NSString
+//            let newString: NSString =  currentString.replacingCharacters(in: range, with: string) as NSString
+//
+//            return newString.length <= maxLength
+//
+        
+        // 입력되고 있는 글자가 "숫자"인 경우 입력을 허용하지 않는 논리
+        if Int(string) != nil {  // (숫자로 변환이 된다면 nil이 아닐테니)
+            return false
+        } else {
+            // 10글자이상 입력되는 것을 막는 코드
+            guard let text = textField.text else { return true }
+            let newLength = text.count + string.count - range.length
+            return newLength <= 10
+        }
+        
+//        // 10글자이상 입력되는 것을 막는 코드 (또다른 구현법)
+//        if (textField.text?.count)! + string.count > 10 {
+//            return false
+//        } else {
+//            return true
+//        }
+        
+
     }
     
     // 텍스트필드의 엔터키가 눌러지면 다음동작을 허락할것인지 말것인지 (엔터키를 눌리게 할지 말지)
@@ -83,6 +115,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         print(#function)
         print("유저가 텍스트 필드의 입력을 끝냈다.")
+        textField.text = "" // 입력이 끝나면 다시 비어있게
     }
     
     
@@ -99,10 +132,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.borderStyle = .roundedRect // 텍스트 필드의 테두리 등 을 바꿀 수 있음
         textField.clearButtonMode = .always // 입력중 언제나 지울수 있게
         textField.returnKeyType = .join
+        
+        // 앱시작하는 순간 키보드가 올라옴
+        textField.becomeFirstResponder() // textField너는 첫번째로 응답 하는 객체가 되야해 알려주는 것임
     }
 
     @IBAction func doneButtonTapped(_ sender: UIButton) {
-        
+        // 버튼 누르면 키보드가 내려감
+        textField.resignFirstResponder()
+        // 텍스트 필드를 응답객체에서 사임한다.
     }
     
 }

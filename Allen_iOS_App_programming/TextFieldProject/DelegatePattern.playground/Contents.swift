@@ -8,7 +8,7 @@ import UIKit
 protocol RemoteControlDelegate {
     func channelUp()
     func channelDown()
-    // func channelRemove() -> Bool  // ⭐️ 텍스트필드처럼 이렇게 해주면 리모컨에서 메서드 실행시 대리자에게 (참/거짓)을 물어보고 그거에 따라 리모컨에서 동작을 처리 하게 해줄 수 있음 
+    // func channelRemove() -> Bool  // ⭐️ 텍스트필드처럼 이렇게 해주면 리모컨에서 메서드 실행시 대리자에게 (참/거짓)을 물어보고 그거에 따라 리모컨에서 동작을 처리 하게 해줄 수 있음
 }
 
 
