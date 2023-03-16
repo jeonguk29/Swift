@@ -54,9 +54,9 @@ class ViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
-//        view.addSubview(passwordTextField)
-//        view.addSubview(passwordInfoLabel)
-//        view.addSubview(passwordSecureButton)
+        view.addSubview(passwordTextField)
+        view.addSubview(passwordInfoLabel)
+        view.addSubview(passwordSecureButton)
         return view
     }()
     
@@ -128,6 +128,7 @@ class ViewController: UIViewController {
         return stview
     }()
     
+    
     // 비밀번호 재설정 버튼
     private lazy var passwordResetButton: UIButton = {
         let button = UIButton()
@@ -139,7 +140,8 @@ class ViewController: UIViewController {
     }()
     
     // 3개의 각 텍스트필드 및 로그인 버튼의 높이 설정
-    private let textViewHeight: CGFloat = 48
+    private let textViewHeight: CGFloat = 48 // ⭐️ 이런식으로 오토레이아웃 잡을때 기준 값을 만들면 나중에 아래에서 하나하나 값 잡은거 한방에 수정 가능
+    // ⭐️ 즉 아래 오토레아웃 코드에 모두 영향을 미침 
     
     // 오토레이아웃 향후 변경을 위한 변수(애니메이션)
     lazy var emailInfoLabelCenterYConstraint = emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor)
@@ -155,13 +157,23 @@ class ViewController: UIViewController {
     
     // 오토레이아웃
     private func setupAutoLayout() {
-        view.addSubview(emailTextFieldView)
-        // 뷰컨의 하위 뷰에 올려줌 emailTextFieldView를 이놈은 텍스트 필드와, 레이블을 올리고 있음
+        view.backgroundColor = UIColor.black
+        view.addSubview(stackView)// 설정이 끝난 스택뷰를 올려줌
+        view.addSubview(passwordResetButton)
         
         // 자동으로 잡아주는거 해제
         
         
         emailInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        passwordInfoLabel.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordSecureButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        passwordResetButton.translatesAutoresizingMaskIntoConstraints = false
         
         // ⭐️ 이 안에 넣어주면
         //emailInfoLabel.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8).isActive = true
@@ -170,17 +182,51 @@ class ViewController: UIViewController {
             emailInfoLabel.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
             emailInfoLabel.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -8),
             emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor),
-            emailInfoLabelCenterYConstraint// 앞뒤 8 간격을 가운데 기준으로 맞춤
-            // 지금 맞추는 기준은 맨 뒤에 있을 뷰를 기준으로 맞춘것임
+           // 앞뒤 8 간격을 가운데 기준으로 맞춤 뷰를 기준 가운데 맞춘거라 탑, 바텀 따로 설정 필요 없음 // 지금 맞추는 기준은 맨 뒤에 있을 뷰를 기준으로 맞춘것임
+            
+            
+            emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor, constant: 15),
+            emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: -2),
+            emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
+            emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -8),
+            
+            // 페스워드 관련 오토레이아웃
+            passwordInfoLabel.leadingAnchor.constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
+            passwordInfoLabel.trailingAnchor.constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: -8),
+            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
+           
+            passwordTextField.topAnchor.constraint(equalTo: passwordTextFieldView.topAnchor, constant: 15),
+            passwordTextField.bottomAnchor.constraint(equalTo: passwordTextFieldView.bottomAnchor, constant: -2),
+            passwordTextField.leadingAnchor.constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
+            passwordTextField.trailingAnchor.constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: -8),
+            
+           
+            passwordSecureButton.topAnchor.constraint(equalTo: passwordTextFieldView.topAnchor, constant: 15),
+            passwordSecureButton.bottomAnchor.constraint(equalTo: passwordTextFieldView.bottomAnchor, constant: -15),
+            // 표시가 끝에 붙어있어서 끝에만 맞춰줌
+            passwordSecureButton.trailingAnchor.constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: -8),
+            
+            
+            // 스택뷰 오토레이아웃 잡아주기
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            stackView.heightAnchor.constraint(equalToConstant: textViewHeight*3 + 36),
+            
+            // 비밀번호 재설정 버튼 오토레이아웃
+            passwordResetButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10),
+            passwordResetButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            passwordResetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            passwordResetButton.heightAnchor.constraint(equalToConstant: textViewHeight),
+            
         ])
         
-        // ⭐️ 위랑 다르게 정식적인 코드 이것에 익숙 해지면 위 처럼 해주면 됨
-        // 이놈도 emailTextFieldView 위에있으니 이놈을 기준으로 오토레이아웃 설정함
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor, constant: 15).isActive = true
-        emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: -2).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8).isActive = true
-        emailTextField.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -8).isActive = true
+      
+ 
+
+        
+      
         
     }
 
