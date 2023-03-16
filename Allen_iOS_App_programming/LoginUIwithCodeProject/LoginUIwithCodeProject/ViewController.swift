@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         button.setTitle("표시", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-//        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
+        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
         return button
     }()
     
@@ -135,13 +135,16 @@ class ViewController: UIViewController {
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-//        button.addTarget(self, action: #selector(resetButtonTapped  ), for: .touchUpInside)
+      
+        // 버튼 누르면 alert창 뜨게 만들기
+        // addTarget 은 #selector를 사용해서 다른 함수를 연결 하는 것임
+        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         return button
     }()
     
     // 3개의 각 텍스트필드 및 로그인 버튼의 높이 설정
     private let textViewHeight: CGFloat = 48 // ⭐️ 이런식으로 오토레이아웃 잡을때 기준 값을 만들면 나중에 아래에서 하나하나 값 잡은거 한방에 수정 가능
-    // ⭐️ 즉 아래 오토레아웃 코드에 모두 영향을 미침 
+    // ⭐️ 즉 아래 오토레아웃 코드에 모두 영향을 미침
     
     // 오토레이아웃 향후 변경을 위한 변수(애니메이션)
     lazy var emailInfoLabelCenterYConstraint = emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor)
@@ -222,13 +225,34 @@ class ViewController: UIViewController {
             
         ])
         
-      
- 
-
-        
-      
         
     }
-
+  
+    
+    @objc func resetButtonTapped(){
+       // print("resetButton이 눌렸습니다.")
+        
+        let alert = UIAlertController(title: "비밀번호 바꾸기", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)// .actionSheet 버튼이 아래서 위로 올라옴
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            print("확인버튼이 눌렸습니다.")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
+            print("취소버튼이 눌렸습니다.")
+        }
+        
+        
+        // 액션을 올려줘야함
+        alert.addAction(success)    // view 와 비슷한 객체라고 생각하면 됨 .addSubview 와 같이 올려주는 것임
+        alert.addAction(cancel)
+        
+        // 실제 띄우기
+        self.present(alert, animated: true, completion: nil) // present는 다음화면으로 넘어가게 해주는 메서드임 실제로 우리가 보는 이 alert 창도 다음 화면임
+        // 사이드 눌러보면 동작하지 않음
+    }
+  
+    @objc func passwordSecureModeSetting(){
+        passwordTextField.isSecureTextEntry.toggle()  //false 비밀번호를 가리지 않음, true 비밀번호를 가림 어렵게 if문 처리할 필요없음
+        //toggle() 메서드 사용시 한번 누르면 참 한번 누르면 거짓 반복임
+    }
 }
 
