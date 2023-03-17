@@ -43,7 +43,8 @@ class ViewController: UIViewController {
         tf.autocorrectionType = .no
         tf.spellCheckingType = .no
         tf.keyboardType = .emailAddress
-//        tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        //값이 변할때마다 셀렉터를 통해서 해당 함수를 호출
+        tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         return tf
     }()
  
@@ -82,7 +83,7 @@ class ViewController: UIViewController {
         tf.spellCheckingType = .no
         tf.isSecureTextEntry = true // 비번이라 가리는 설정
         tf.clearsOnBeginEditing = false
-//        tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         return tf
     }()
     
@@ -109,7 +110,7 @@ class ViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.isEnabled = false    // 처음에 버튼 실행 안되게 설정 나중에 이메일 입력하면 누를수 있게 바꿀것임
-//        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -241,7 +242,7 @@ class ViewController: UIViewController {
         
     }
   
-    
+    // MARK: - 비밀번호 가리기 모드 켜고 끄기
     @objc func resetButtonTapped(){
        // print("resetButton이 눌렸습니다.")
         
@@ -267,6 +268,17 @@ class ViewController: UIViewController {
         passwordTextField.isSecureTextEntry.toggle()  //false 비밀번호를 가리지 않음, true 비밀번호를 가림 어렵게 if문 처리할 필요없음
         //toggle() 메서드 사용시 한번 누르면 참 한번 누르면 거짓 반복임
     }
+    
+    
+    @objc func loginButtonTapped(){
+        print("로그인 버튼이 눌렸습니다.")
+    }
+    
+    // 앱의 화면을 터치하면 동작하는 함수
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true) // 지금 첫번째 응답 객체들을 종료시켜서 다 내려감 (키보드가 내려갈 것임)
+    }
+    
 }
 
 
@@ -274,7 +286,7 @@ class ViewController: UIViewController {
 // 텍스트필드 사용하기위해서 프로토콜을 채택해야하는데 일반적으로 아래와 같이 확장을해서 구현함 : 일반적인 델리게이트 패턴 사용방법
 extension ViewController: UITextFieldDelegate { // 코드가 좀더 정리되기 때문임 아래와 같은 메서드들이 위에 뷰컨에 한번에 있으면 정신 없음
     
-    
+    // MARK: - 텍스트필드 편집 시작할때의 설정 - 문구가 위로올라가면서 크기 작아지고, 오토레이아웃 업데이트
     // 애니메이션을 텍스트필드 시작할때와 끝날때 주면 되니까 아래와 같은메서드를 구현함
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == emailTextField {    // 유저가 선택한게 emailTextField라면 백그라운드 색상을 바꾸고, 폰트 크기를 바꿈
@@ -325,4 +337,25 @@ extension ViewController: UITextFieldDelegate { // 코드가 좀더 정리되기
         }
     }
     
+    // MARK: - 이메일텍스트필드, 비밀번호 텍스트필드 두가지 다 채워져 있을때, 로그인 버튼 빨간색으로 변경
+    // 매개변수로 텍스트 필드가 전달 될것임
+    @objc private func textFieldEditingChanged(_ textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " { // 텍스트 필드가 한게인데 공백문자면
+                textField.text = "" // 빈 문자열로 만들고 해당 함수 빠져나감
+                return
+            }
+        }
+        guard
+            let email = emailTextField.text, !email.isEmpty, // 텍스트가 있고, 비어있지 않다면 (! 붙여서 부정으로 아니라면)
+            let password = passwordTextField.text, !password.isEmpty // 텍스트가 있고 비어있지 않다면
+        else {
+            loginButton.backgroundColor = .clear    // 조건에 맞지않다면 원래대로 클리어 색상에 버튼 활성화 시키지 않음
+            loginButton.isEnabled = false
+            return
+        }
+        loginButton.backgroundColor = .red // 색상을 바꾸고
+        loginButton.isEnabled = true    // 버튼을 활성화 시킴
+    }
+    //⭐️ 현제 글자가 하나하나 입력 될때마다 이 함수를 실행 시키는 것임
 }
