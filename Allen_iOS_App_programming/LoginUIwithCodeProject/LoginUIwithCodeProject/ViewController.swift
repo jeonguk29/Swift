@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     // MARK: - 이메일 입력하는 텍스트 뷰
     private lazy var emailTextFieldView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
         view.addSubview(emailTextField) // 뷰 위에다 텍스트 필드와
@@ -146,12 +146,22 @@ class ViewController: UIViewController {
     private let textViewHeight: CGFloat = 48 // ⭐️ 이런식으로 오토레이아웃 잡을때 기준 값을 만들면 나중에 아래에서 하나하나 값 잡은거 한방에 수정 가능
     // ⭐️ 즉 아래 오토레아웃 코드에 모두 영향을 미침
     
-    // 오토레이아웃 향후 변경을 위한 변수(애니메이션)
+    
+    // ⭐️ 오토레이아웃 향후 변경을 위한 변수(애니메이션)
     lazy var emailInfoLabelCenterYConstraint = emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor)
+    // y축 즉 가운데 제약을 담아둔것임
     lazy var passwordInfoLabelCenterYConstraint = passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //⭐️ 이렇게 해야지만 두 텍스트필드의 대리자가 뷰컨이 되는 것임
+        // 이렇게 대리자 역할을 뷰컨이해야지만 아래 확장에서 정의한 메서드들을 사용할수 있는 것임
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        
         setupAutoLayout()
         
     }
@@ -184,9 +194,10 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             emailInfoLabel.leadingAnchor.constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
             emailInfoLabel.trailingAnchor.constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -8),
-            emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor),
            // 앞뒤 8 간격을 가운데 기준으로 맞춤 뷰를 기준 가운데 맞춘거라 탑, 바텀 따로 설정 필요 없음 // 지금 맞추는 기준은 맨 뒤에 있을 뷰를 기준으로 맞춘것임
-            
+           // emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor),
+           // 이 레이블이 동적으로 움직이게 만들어야 해서 정적으로 이렇게 두면 안되는것임
+            emailInfoLabelCenterYConstraint, // 위에서 만든 변수로 선언
             
             emailTextField.topAnchor.constraint(equalTo: emailTextFieldView.topAnchor, constant: 15),
             emailTextField.bottomAnchor.constraint(equalTo: emailTextFieldView.bottomAnchor, constant: -2),
@@ -196,8 +207,10 @@ class ViewController: UIViewController {
             // 페스워드 관련 오토레이아웃
             passwordInfoLabel.leadingAnchor.constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
             passwordInfoLabel.trailingAnchor.constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: -8),
-            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
-           
+            //passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor),
+            passwordInfoLabelCenterYConstraint, // 위와 똑같이 동적으로 만들기 위해 변수 사용
+            
+            
             passwordTextField.topAnchor.constraint(equalTo: passwordTextFieldView.topAnchor, constant: 15),
             passwordTextField.bottomAnchor.constraint(equalTo: passwordTextFieldView.bottomAnchor, constant: -2),
             passwordTextField.leadingAnchor.constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
@@ -256,3 +269,60 @@ class ViewController: UIViewController {
     }
 }
 
+
+
+// 텍스트필드 사용하기위해서 프로토콜을 채택해야하는데 일반적으로 아래와 같이 확장을해서 구현함 : 일반적인 델리게이트 패턴 사용방법
+extension ViewController: UITextFieldDelegate { // 코드가 좀더 정리되기 때문임 아래와 같은 메서드들이 위에 뷰컨에 한번에 있으면 정신 없음
+    
+    
+    // 애니메이션을 텍스트필드 시작할때와 끝날때 주면 되니까 아래와 같은메서드를 구현함
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField {    // 유저가 선택한게 emailTextField라면 백그라운드 색상을 바꾸고, 폰트 크기를 바꿈
+            emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2972877622, green: 0.2973434925, blue: 0.297280401, alpha: 1)
+            emailInfoLabel.font = UIFont.systemFont(ofSize: 11)
+            
+            // 오토레이아웃 업데이트
+            emailInfoLabelCenterYConstraint.constant = -13 // -13 만큼 높이가 올라가는 것임
+        }
+        
+        if textField == passwordTextField { // 유저가 선택한게 passwordTextField라면
+            passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2972877622, green: 0.2973434925, blue: 0.297280401, alpha: 1)
+            passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
+            // 오토레이아웃 업데이트
+            passwordInfoLabelCenterYConstraint.constant = -13
+        }
+        
+        // 실제 레이아웃 변경은 애니메이션으로 줄꺼야
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded() // 하위에 있는 모든걸 자연 스럽게 이동 시키는 코드
+//            self.emailTextFieldView.layoutIfNeeded()
+//            self.passwordTextField.layoutIfNeeded() // 이렇게 따로 따로 두개 쓰는게 귀찮아서 이렇게 사용한 것임
+        }
+    }
+    
+    // 택스트 필드 끝나면 원래대로 되돌리기 위와 반대되는 코드 삽입
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+            // 빈칸이면 원래로 되돌리기
+            if emailTextField.text == "" { // 입력된게 없으면 다시 되돌리기
+                emailInfoLabel.font = UIFont.systemFont(ofSize: 18)
+                emailInfoLabelCenterYConstraint.constant = 0
+            }
+        }
+        if textField == passwordTextField {
+            passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+            // 빈칸이면 원래로 되돌리기
+            if passwordTextField.text == "" {
+                passwordInfoLabel.font = UIFont.systemFont(ofSize: 18)
+                passwordInfoLabelCenterYConstraint.constant = 0
+            }
+        }
+        
+        // 실제 레이아웃 변경은 애니메이션으로 줄꺼야
+        UIView.animate(withDuration: 0.3) { // 이코드가 없으면 애니메이션이 따로 없어서 조금 딱딱하게 보여짐 그래서 애니메이션 효과 주기위한 코드
+            self.stackView.layoutIfNeeded() // 0.3 초동안 애니메이션 효과가 일어남 : 오토레이아웃 동적 조정할때는 이런 애니메이션 코드를 꼭 삽입함
+        }
+    }
+    
+}
