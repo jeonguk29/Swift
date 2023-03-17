@@ -158,6 +158,8 @@ final class ViewController: UIViewController {
     // y축 즉 가운데 제약을 담아둔것임
     lazy var passwordInfoLabelCenterYConstraint = passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor)
     
+    
+    // MARK: - 뷰디드로드 
     override func viewDidLoad() {
         super.viewDidLoad()
         
