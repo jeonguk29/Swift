@@ -7,10 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+//⭐️ 클래스는 동적 디스패치 때문에 느린데 실무에서는 뷰컨 앞에 final 키워드를 붙여 상속이 불가능하게 함으로써
+// 다이렉트 디패치를 사용하게 만들어 버림 꼭 붙이자
+final class ViewController: UIViewController {
 
     // MARK: - 이메일 입력하는 텍스트 뷰
-    private lazy var emailTextFieldView: UIView = {
+    private lazy var emailTextFieldView: UIView = { // ⭐️ private 접근제어 같은 클래스 내부에서 만 사용하게 실무적 관점에서 final과 마찮가지로 붙이는게 좋음
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         view.layer.cornerRadius = 5
@@ -55,7 +57,10 @@ class ViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         view.layer.cornerRadius = 5
         view.clipsToBounds = true
-        view.addSubview(passwordTextField)
+        
+        // ⭐️  lazy var 해야 addSubview를 여기에 넣을 수 있음 순서가 있어야 되기 때문임
+        // lazy var는 뷰컨트롤러를 먼저 메모리에 먼저 올린 후에, 해당 뷰 컨트롤러의 인스턴스에 접근할 필요가 있는.. 예를 들어 self.view.addSubview(버튼) 와 같은 코드가 있을때 사용하시면 됩니다.
+        view.addSubview(passwordTextField) // passwordTextField 이런게 먼저 올라가 있어야함
         view.addSubview(passwordInfoLabel)
         view.addSubview(passwordSecureButton)
         return view
@@ -287,6 +292,8 @@ class ViewController: UIViewController {
 extension ViewController: UITextFieldDelegate { // 코드가 좀더 정리되기 때문임 아래와 같은 메서드들이 위에 뷰컨에 한번에 있으면 정신 없음
     
     // MARK: - 텍스트필드 편집 시작할때의 설정 - 문구가 위로올라가면서 크기 작아지고, 오토레이아웃 업데이트
+    // ⭐️ 아래 선택적 요구사항 메서드를 구현하여 텍스트 필드가 시작 되는 시점, 끝나는 시점을 케치하여 레이블 오토레이아웃을 조정
+    
     // 애니메이션을 텍스트필드 시작할때와 끝날때 주면 되니까 아래와 같은메서드를 구현함
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == emailTextField {    // 유저가 선택한게 emailTextField라면 백그라운드 색상을 바꾸고, 폰트 크기를 바꿈
