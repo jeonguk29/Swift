@@ -42,11 +42,21 @@ class ViewController: UIViewController {
     
     // 2) 코드로 스토리보드 객체를 생성해서, 화면 이동
     @IBAction func storyboardWithCodeButtonTapped(_ sender: UIButton) {
-
+        // 위랑 다르게 스토리보드로 UI를 생성함 즉 힙영역에 따로 스토리 보드로 만든 인스턴스가 있는 것임
+        // 그런 각각의 스토리 보드를 연결을 시켜줘야함
         
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? SecondViewController else{
+            return
+        }
         
+        // storyboard?.instantiateViewController(withIdentifier: "secondVC") 까지는 UIViewController 라는 것이 반환(구체적이지 않음)되고 우리가 만든 클래스로 구체적 타입 캐스팅이 필요함
         
-        
+        firstVC.modalPresentationStyle = .fullScreen 
+        secondVC.someString = "아빠상어"
+        // secondVC.mainLabel.text = "아빠상어" 앱이 꺼짐 아직 스토리보드 메모리에 올라가지도 않음        :   모든 내부적 코드가 연결되기 전에 접근해서 오류남
+        // someString은 SecondViewController 가 메모리에 올라갈때 생기는거니까 그순간에 아빠상어라는 데이터를 전달해주는 것임 (값을 넣고 찍어버림)
+        // 그다음에 스토리보드랑 SecondViewController 인스턴스랑 연결된 다음에 그 데이터를 그려주는 것임
+        present(secondVC, animated: true, completion: nil) // 사실상 스토리보드상에 각각의 화면 인스턴스를 연결 시켜주는 것임
     }
     
     
