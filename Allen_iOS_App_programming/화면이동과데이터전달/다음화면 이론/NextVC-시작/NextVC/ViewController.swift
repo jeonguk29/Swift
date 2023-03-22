@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         
     }
     
-    // 2) 코드로 스토리보드 객체를 생성해서, 화면 이동
+    // 2) 코드로 스토리보드 객체를 생성해서, 화면 이동. ⭐️⭐️⭐️⭐️⭐️⭐️ 가장 많이 사용하고 추천하는 방법 실무에서 세그웨이는 잘 다루지 않음 복잡해서
     @IBAction func storyboardWithCodeButtonTapped(_ sender: UIButton) {
         // 위랑 다르게 스토리보드로 UI를 생성함 즉 힙영역에 따로 스토리 보드로 만든 인스턴스가 있는 것임
         // 그런 각각의 스토리 보드를 연결을 시켜줘야함
@@ -64,10 +64,14 @@ class ViewController: UIViewController {
     // 3) 스토리보드에서의 화면 이동(간접 세그웨이)
     @IBAction func storyboardWithSegueButtonTapped(_ sender: UIButton) {
         
-
-        // 세번째 버튼이 눌렸을때 화면을 이동시켜야 하는데 그걸 담당하는게 세그웨이
-        performSegue(withIdentifier: "toThirdVC", sender: self) // 세그웨이 활성화 코드, sender 에는 일반적으로 보내는 놈을 써줌 ViewController
-        // 이제 버튼이 눌리면 위 코드에 따라 세그웨이가 동작하는 것임
+        if num > 5{
+            // 직접 세그웨이 연결이랑 다르게 연결된 버튼 메서드에서 바로 조건을 줘서 실행 여부 결정이 가능함
+        }else{
+            // 세번째 버튼이 눌렸을때 화면을 이동시켜야 하는데 그걸 담당하는게 세그웨이
+            performSegue(withIdentifier: "toThirdVC", sender: self) // 세그웨이 활성화 코드, sender 에는 일반적으로 보내는 놈을 써줌 ViewController
+            // 이제 버튼이 눌리면 위 코드에 따라 세그웨이가 동작하는 것임
+        }
+    
                 
     }
     
@@ -80,8 +84,32 @@ class ViewController: UIViewController {
             
             thirdVC.someString = "엄마상어"
         }
+        
+    // 4) 버튼에서 직접적으로 화면에 세그웨이 연결 (위에서는 화면에서 연결했음)
+        // 직접적 연결했을때는 자동으로 performSegue()를 호출하는 효과가 있음 (세그웨이 활성화)
+        if segue.identifier == "toFourthVC"{ // 1. 식별자 확인
+            let fourthVC = segue.destination as! FourthViewController // 2. 도착지 확인 => 구체적 타입으로 변환
+                // 어떠한 도착지점인 UIViewController 를 반환해서 명확하게 알려줌 // 3. 데이터 전달
+            
+            fourthVC.someString = "뚜루루루"
+        }
     }
     
+    var num = 3
+    
+    // 직접적으로 연결할때 어떤 조건에 따라서 버튼을 실행할지 정해져있음
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        // shouldPerformSegue 는 직접적인 세그웨이를 만들었을때만 실행이 됨
+        // 왜 직접 세그웨이로 만들었을때만 이메서드가 있냐면 이런식으로 조건을 줄 수 있는 기능을 구현하기 위해서임 즉 조건에 따라 실행여부를 구현하기 위함임
+        // 간접 세그웨이를 만든다면 조건을 바로 줄수 있음
+        if num > 5{
+            return false
+        }else{
+            return true
+        }
+    }
+    
+  
 
     
 }
