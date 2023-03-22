@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         
         // storyboard?.instantiateViewController(withIdentifier: "secondVC") 까지는 UIViewController 라는 것이 반환(구체적이지 않음)되고 우리가 만든 클래스로 구체적 타입 캐스팅이 필요함
         
-        firstVC.modalPresentationStyle = .fullScreen 
+        secondVC.modalPresentationStyle = .fullScreen
         secondVC.someString = "아빠상어"
         // secondVC.mainLabel.text = "아빠상어" 앱이 꺼짐 아직 스토리보드 메모리에 올라가지도 않음        :   모든 내부적 코드가 연결되기 전에 접근해서 오류남
         // someString은 SecondViewController 가 메모리에 올라갈때 생기는거니까 그순간에 아빠상어라는 데이터를 전달해주는 것임 (값을 넣고 찍어버림)
@@ -65,10 +65,21 @@ class ViewController: UIViewController {
     @IBAction func storyboardWithSegueButtonTapped(_ sender: UIButton) {
         
 
-        
-        
-        
-        
+        // 세번째 버튼이 눌렸을때 화면을 이동시켜야 하는데 그걸 담당하는게 세그웨이
+        performSegue(withIdentifier: "toThirdVC", sender: self) // 세그웨이 활성화 코드, sender 에는 일반적으로 보내는 놈을 써줌 ViewController
+        // 이제 버튼이 눌리면 위 코드에 따라 세그웨이가 동작하는 것임
+                
+    }
+    
+    // 세그웨이를 통해 데이터 전달을 할때는 아래와 같은 메서드를 재정의하여 보내야함 ⭐️ 데이터 전달시 필수구현    :   performSegue가 자동으로 호출함
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+        if segue.identifier == "toThirdVC"{ // 1. 식별자 확인
+            let thirdVC = segue.destination as! ThirdViewController // 2. 도착지 확인 => 구체적 타입으로 변환
+                // 어떠한 도착지점인 UIViewController 를 반환해서 명확하게 알려줌 // 3. 데이터 전달
+            
+            thirdVC.someString = "엄마상어"
+        }
     }
     
 
