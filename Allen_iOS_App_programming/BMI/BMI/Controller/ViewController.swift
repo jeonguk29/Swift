@@ -18,8 +18,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var calcalateButton: UIButton!
     
-    var bmi: Double?    // 다른 함수들에서도 사용하기 위해 값을 따로 저장시킴
-     
+    var bmiManager = BMICalculatorManager() // 이렇게 모델 인스턴스를 찍어서 컨트롤러와, 뷰 객체간의 소통을 할 수 있도록함
+     /*
+      ⭐️ bmiManager 는 저장속성임 ViewController 의 그러니까 컴파일시 바로 BMICalculatorManager의 인스턴스를 찍어서
+      이를 활용하여 소통을 할 수 있는 것임 (모델 객체이용)
+      */
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -42,12 +45,11 @@ class ViewController: UIViewController {
         
         guard let heightText = heightTextField.text, let weightText = weightTextField.text else {return}
         
+        /* ⭐️ 이제는 이렇게 구현 할 필요가 없음 모델객체한테 부탁해서 값을 가져오면 되는 것임 비즈니스 모델이 다 거기에 있으니까
         bmi = calculateBMI(height: heightText, weight: weightText)
-        // 일반적으로 함수 하나에 하나의 작업만 넣어주는 것이 좋아서 계산 함수를 따로 분리시킴
-        //heightTextField.text! 강제 추출 가능한게 아래 텍스트 필드 함수에서 문자를 어떻게든 입력하도록 구현했기 때문임
-        
-        // 필요없음(버튼에서 직접 연결)
-        //performSegue(withIdentifier: "toSecondVC", sender: self)
+         */
+        bmiManager.calculateBMI(height: heightText, weight: weightText)
+        bmiManager.getBMIResult()
     }
     
     // 조건에 따라 다음화면 이동할지/말지  : (직접연결이라 아래 메서드 구현함)
@@ -72,62 +74,16 @@ class ViewController: UIViewController {
             secondVC.modalPresentationStyle = .fullScreen
             
             // 다음화면으로 데이터 전달
-            secondVC.bmiNumber = bmi
-            secondVC.bmiColor = getBackgroundColor()
-            secondVC.adviceString = getBMIAdviceString()
+            secondVC.bmiNumber = bmiManager.getBMIResult()
+            secondVC.bmiColor = bmiManager.getBackgroundColor()
+            secondVC.adviceString = bmiManager.getBMIAdviceString()
         }
         // 다음화면으로 가기전에 텍스트필드 비우기
         heightTextField.text = ""
         weightTextField.text = ""
     }
     
-    // BMI계산 메서드
-    func calculateBMI(height: String, weight: String) -> Double {
-        guard let h = Double(height), let w = Double(weight) else { return 0.0 }
-        var bmi = w / (h * h) * 10000
-        bmi = round(bmi * 10) / 10
-        print("BMI결과값: \(bmi)")
-        return bmi
-    }
-    
-    
-    // 색깔 얻는 메서드
-    func getBackgroundColor() -> UIColor {
-        guard let bmi = bmi else { return UIColor.black }
-        switch bmi {
-        case ..<18.6:
-            return UIColor(displayP3Red: 22/255, green: 231/255, blue: 207/255, alpha: 1)
-        case 18.6..<23.0:
-            return UIColor(displayP3Red: 212/255, green: 251/255, blue: 121/255, alpha: 1)
-        case 23.0..<25.0:
-            return UIColor(displayP3Red: 218/255, green: 127/255, blue: 163/255, alpha: 1)
-        case 25.0..<30.0:
-            return UIColor(displayP3Red: 255/255, green: 150/255, blue: 141/255, alpha: 1)
-        case 30.0...:
-            return UIColor(displayP3Red: 255/255, green: 100/255, blue: 78/255, alpha: 1)
-        default:
-            return UIColor.black
-        }
-    }
-    
-    // 문자열 얻는 메서드
-    func getBMIAdviceString() -> String {
-        guard let bmi = bmi else { return "" }
-        switch bmi {
-        case ..<18.6:
-            return "저체중"
-        case 18.6..<23.0:
-            return "표준"
-        case 23.0..<25.0:
-            return "과체중"
-        case 25.0..<30.0:
-            return "중도비만"
-        case 30.0...:
-            return "고도비만"
-        default:
-            return ""
-        }
-    }
+   
     
 }
 
