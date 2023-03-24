@@ -43,13 +43,17 @@ class ViewController: UIViewController {
     @IBAction func calculateButtonTapped(_ sender: UIButton) {
         print(#function)
         
-        guard let heightText = heightTextField.text, let weightText = weightTextField.text else {return}
+        //guard let heightText = heightTextField.text, let weightText = weightTextField.text else {return}
         
         /* ⭐️ 이제는 이렇게 구현 할 필요가 없음 모델객체한테 부탁해서 값을 가져오면 되는 것임 비즈니스 모델이 다 거기에 있으니까
         bmi = calculateBMI(height: heightText, weight: weightText)
          */
+        
+        /* 이제 여기서 계산 필요없음 ⭐️ 다음 화면 넘어갈때 문자열을 얻어서 bmiManager에게 바로 bmi 구조체 인스턴스를 받아와 전달하기 때문임
+         어짜피 버튼 눌리면 세그웨이 자동으로 실행 되기 때문에 아래 메서드 순서대로 다 동작함
         bmiManager.calculateBMI(height: heightText, weight: weightText)
         bmiManager.getBMIResult()
+         */
     }
     
     // 조건에 따라 다음화면 이동할지/말지  : (직접연결이라 아래 메서드 구현함)
@@ -74,9 +78,11 @@ class ViewController: UIViewController {
             secondVC.modalPresentationStyle = .fullScreen
             
             // 다음화면으로 데이터 전달
-            secondVC.bmiNumber = bmiManager.getBMIResult()
-            secondVC.bmiColor = bmiManager.getBackgroundColor()
-            secondVC.adviceString = bmiManager.getBMIAdviceString()
+//            secondVC.bmiNumber = bmiManager.getBMIResult()
+//            secondVC.bmiColor = bmiManager.getBackgroundColor()
+//            secondVC.adviceString = bmiManager.getBMIAdviceString()
+            
+            secondVC.bmi = bmiManager.getBMI(height: heightTextField.text!, weight: weightTextField.text!)
         }
         // 다음화면으로 가기전에 텍스트필드 비우기
         heightTextField.text = ""
