@@ -7,6 +7,12 @@
 
 import UIKit
 
+/*
+ iOS 12 까지
+ 
+ sceneWillResignActive 같은 메서드들을  AppDelegate.swift 에서 구현해야 했지만 13버전 이후부터는 역할을 분담하여
+ 여기서 구현해줘야함
+ */
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
