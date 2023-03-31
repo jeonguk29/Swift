@@ -26,10 +26,19 @@ class ViewController: UIViewController {
         
         tableView.delegate = self // UITableViewDelegate 프로토콜 채택시 행동을 대리해줄 놈을 지정
         tableView.rowHeight = 120 // 하나하나 셀의 높이를 설정함
+        
+        title = "영화목록" // title 은 뷰컨이 가지고 있는 속성임
+        
         movieDataManager.makeMovieData() // ⭐️ 실제 데이터 생성 (서버와 통신한다고 가정)
        // moviesArray = movieDataManager.getMovieData() // ⭐️ 모델에서 구현한 것을 메니저로 만들어 요청 나 영화 데이터좀 줘!!
     }
-
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        movieDataManager.updateMovieData() // 영화 데이터 추가됨
+        tableView.reloadData() // ⭐️⭐️ 반드시 뿌려질 데이터가 바뀔때 이 메서드 까지 입력해줘야 실제 테이블 뷰에 반영된게 보임
+        // 이제 데이터가 바뀌었으니까 테이블 뷰 자체를 다시 불러와라
+    }
+    
 }
 
 // 일반적으로 프로토콜 채택해서 메서드를 구현할때 이렇게 확장에서 구현함 보기 편하기 때문

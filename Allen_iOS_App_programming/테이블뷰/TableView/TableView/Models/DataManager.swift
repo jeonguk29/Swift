@@ -27,6 +27,12 @@ class DataManager{
     func getMovieData() -> [Movie]{
         return movieDataArray
     }
+    
+    // 구조체를 하나 생성해서 데이터에 추가하고 있음
+    func updateMovieData(){
+        let movie = Movie(movieImage: UIImage(named: "spiderman2.png"), movieName: "스파이더맨 시즌2", movieDescription: "스파이더맨 시즌2")
+        movieDataArray.append(movie)
+    }
 }
 
 
