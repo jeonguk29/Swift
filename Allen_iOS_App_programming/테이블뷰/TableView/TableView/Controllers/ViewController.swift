@@ -22,7 +22,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         // 똑같이 델리게이트 패턴을 사용하고 있어서 처리를 해줄 데리자를 지정해야하는데 이름이 조금 다른 것임 즉 테이블 뷰의 데리자 설정은 이런식으로 한다고 보면 됨
+        // UITableViewDataSource 프로토콜 채택시 몇개의 행을 그리고 어떻게 그려야 할지 알려주는 대리자를 지정
         
+        tableView.delegate = self // UITableViewDelegate 프로토콜 채택시 행동을 대리해줄 놈을 지정
         tableView.rowHeight = 120 // 하나하나 셀의 높이를 설정함
         movieDataManager.makeMovieData() // ⭐️ 실제 데이터 생성 (서버와 통신한다고 가정)
        // moviesArray = movieDataManager.getMovieData() // ⭐️ 모델에서 구현한 것을 메니저로 만들어 요청 나 영화 데이터좀 줘!!
@@ -47,7 +49,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 몇개의 컨텐츠를 만들면 되는지 알려주면 되는 메서드
         
-        
+        print(#function)
         return movieDataManager.getMovieData().count //⭐️ 나 배열좀 줘라 한다음 배열 반환되면 바로 카운트 적용
     }
     
@@ -56,20 +58,11 @@ extension ViewController: UITableViewDataSource {
     // ⭐️ 즉 이 메서드는 테이블 뷰 셀을 그려 테이블 뷰에게 리턴해주는 메서드임
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell      // 우리가 스토리보드에 테이블뷰에 올린 테이블뷰 셀에 Identifier를 MovieCell로 지정하여 MovieCell라는 이름을 가진 셀을 꺼내 쓸거야라는 뜻임 계속 재사용 하겠다.
-        // for: <#T##IndexPath#> 는 몇번째 셀에 있는 애를 꺼낼건지 경로를 넣으면 됨 보통 관습적으로 위에 파라미터로 들어오는 애를 사용함
-        // dequeueReusableCell 메서드의 결과는 UITableViewCell이라는 일반적인 타입임 그걸 타입 케스팅 하여 사용해야함
+        print(#function)
         
-        //우리가 실제로 UITableViewCell 를 상속받아 MovieCell 를 만들었고 그 속성들은 여기서 사용이 가능 한것임
-        /*
-         ⭐️indexPath 의 두가지 속성
-         indexPath.section  :    테이블셀   (테이블 뷰를 그룹같은 것으로 만들었을때 그 그룹에 해당 하는 것임) : 그룹에 번호
-         indexPath.row  :      테이블셀 행을 의미함  (몇번째 녀석인지)  : 그룹에 행 번호
-         */
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell      // 우리가 스토리보드에 테이블뷰에 올린 테이블뷰 셀에 Identifier를
         
-        // indexPath.row는 공식인데 우리가 만든 배열중 선택시 그 배열의 인덱스 번호가 들어간다고 생각하면 됨
-        
-        var array = movieDataManager.getMovieData() //⭐️ 배열 반환 될것임 그러면 바로 아래에서 사용
+        let array = movieDataManager.getMovieData() //⭐️ 배열 반환 될것임 그러면 바로 아래에서 사용
         
         let movie = array[indexPath.row]
         cell.mainImageView.image = movie.movieImage // 둘다 옵셔널 타입이라 바로 넣을 수 있음
@@ -78,5 +71,30 @@ extension ViewController: UITableViewDataSource {
         cell.selectionStyle = .none     // 셀 선택시 배경색 바뀜 방지 가능
         
         return cell
+    }
+}
+
+
+// UITableViewDelegate 는 실제 테이블 뷰에서 일어나는 이벤트(행동 처리를 담당하는 프로토콜임) 델리게이트 패턴
+extension ViewController: UITableViewDelegate{
+    
+    // cell이 하나 선택 되었을때 작동
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // indexPath 그게 몇번째 행인지는 알아서 전달 해줄 것임
+        performSegue(withIdentifier: "toDetail", sender: indexPath) //⭐️ 세그웨이로 이동 될때 해당 indexPath 값 까지 같이 전달을 하는 것임
+    }
+    
+    // 세그웨이로 데이터 전달시 사용했었음
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) { // ⭐️ 그렇다면 prepare 메서드 구현시 sender에 indexPath 를 전달 받을 수 있음
+        if segue.identifier == "toDetail" {
+            let detailVC = segue.destination as! DetailViewController
+            
+            let array = movieDataManager.getMovieData()
+            
+            let indexPath = sender as! IndexPath
+            // 우리가 전달하기 원하는 데이터를 뽑아서 전달
+            detailVC.movieData = array[indexPath.row] // row 까지 줌으로 정확한 행 전달 가능
+            
+            
+        }
     }
 }
