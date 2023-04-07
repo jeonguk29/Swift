@@ -20,7 +20,7 @@ class AvatarViewController: UIViewController {
         super.viewDidLoad()
         avatarDataManager.makeQuestionData()
         collectionView.dataSource = self
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+       // collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
     }
     
@@ -52,7 +52,15 @@ extension AvatarViewController: UICollectionViewDataSource{
 extension ViewController: UICollectionViewDelegateFlowLayout{
   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 10, height: 10)
+        
+        let itemSpacing:CGFloat = 10
+        let textAreaHeight: CGFloat = 35
+        
+        let width: CGFloat = (collectionView.bounds.width - itemSpacing) / 2
+        
+        let height: CGFloat = width * 10/7 + textAreaHeight
+        
+        return CGSize(width: width, height: height)
     }
     
 
