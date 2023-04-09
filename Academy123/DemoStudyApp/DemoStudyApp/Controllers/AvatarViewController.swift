@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AvatarViewController: UIViewController {
+class AvatarViewController: UIViewController, UICollectionViewDelegate {
     
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,7 +21,7 @@ class AvatarViewController: UIViewController {
         avatarDataManager.makeQuestionData()
         collectionView.dataSource = self
        // collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
+        collectionView.delegate = self
     }
     
   
@@ -66,6 +66,8 @@ extension ViewController: UICollectionViewDelegateFlowLayout{
 
 }
 
-//extension ViewController: UICollectionViewDelegate{
-//
-//}
+extension ViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toVC-CyCle", sender: nil)
+    }
+}

@@ -21,6 +21,8 @@
 		64C1C34A29E01633001898F6 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C1C34929E01633001898F6 /* AvatarViewController.swift */; };
 		64C1C34C29E028C4001898F6 /* AvatarQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C1C34B29E028C4001898F6 /* AvatarQuestion.swift */; };
 		64C1C34E29E02921001898F6 /* AvatarDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C1C34D29E02921001898F6 /* AvatarDataManager.swift */; };
+		64C1C35129E1BECA001898F6 /* VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C1C35029E1BECA001898F6 /* VCViewController.swift */; };
+		64C1C35329E1BF10001898F6 /* SecondVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C1C35229E1BF10001898F6 /* SecondVCViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		64C1C34929E01633001898F6 /* AvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		64C1C34B29E028C4001898F6 /* AvatarQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarQuestion.swift; sourceTree = "<group>"; };
 		64C1C34D29E02921001898F6 /* AvatarDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarDataManager.swift; sourceTree = "<group>"; };
+		64C1C35029E1BECA001898F6 /* VCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCViewController.swift; sourceTree = "<group>"; };
+		64C1C35229E1BF10001898F6 /* SecondVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVCViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,11 +112,21 @@
 		64C1C33C29DFD39D001898F6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64C1C34F29E1BE94001898F6 /* VC-CyCle */,
 				64C1C32829DD8E64001898F6 /* ViewController.swift */,
 				64C1C34529E001AD001898F6 /* AnswerDetailViewController.swift */,
 				64C1C34929E01633001898F6 /* AvatarViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		64C1C34F29E1BE94001898F6 /* VC-CyCle */ = {
+			isa = PBXGroup;
+			children = (
+				64C1C35029E1BECA001898F6 /* VCViewController.swift */,
+				64C1C35229E1BF10001898F6 /* SecondVCViewController.swift */,
+			);
+			path = "VC-CyCle";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,7 +201,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				64C1C34829E01585001898F6 /* Part2CollectionViewCell.swift in Sources */,
+				64C1C35129E1BECA001898F6 /* VCViewController.swift in Sources */,
 				64C1C33E29DFD400001898F6 /* Question.swift in Sources */,
+				64C1C35329E1BF10001898F6 /* SecondVCViewController.swift in Sources */,
 				64C1C34C29E028C4001898F6 /* AvatarQuestion.swift in Sources */,
 				64C1C34629E001AD001898F6 /* AnswerDetailViewController.swift in Sources */,
 				64C1C34029DFE458001898F6 /* DataManager.swift in Sources */,
