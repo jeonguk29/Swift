@@ -88,6 +88,7 @@ final class MyTableViewCell: UITableViewCell {
  
     //MARK: - 오토레이아웃 셋팅
     // (오토레이아웃 변하지 않는 경우) 일반적으로 생성자에서 잡으면 됨 ⭐️⭐️⭐️
+    // 오토 레이아웃을 여기에 구현해줘야함
     override func updateConstraints() {
         setConstraints()
         super.updateConstraints()
@@ -97,6 +98,7 @@ final class MyTableViewCell: UITableViewCell {
         super.layoutSubviews()
         self.mainImageView.clipsToBounds = true
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.width / 2
+        // 이미지 뷰를 동그라미 그리기 : 뷰에 드로잉 사이클에서 배웠음 
     }
     
     func setConstraints() {

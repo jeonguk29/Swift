@@ -44,7 +44,12 @@ final class ViewController: UIViewController {
     
     func setupTableView() {
         tableView.dataSource = self
-        tableView.rowHeight = 60 // 셀의 크기 설정 
+        tableView.rowHeight = 60 // 셀의 크기 설정
+        
+        // 코드로 셀 등록시 이걸 꼭 해줘야함
+        tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "MemberCell")
+        // 타입 인스턴스 형태로 첫번째 매개변수를 넘겨 줘야함
+        // 여기서 등록을 하니까 아래서 꺼내서 셀을 사용할 수 있는 것임 
     }
     
     func setupDatas(){
@@ -74,8 +79,40 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         // 배열 개수로 몇개의 셀을 만들지 정의
     }
     
+    // 셀을 그림
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath)
+        as! MyTableViewCell
+        
+        /* 셀 구현 첫번째 방법
+        cell.mainImageView.image = memberListManager[indexPath.row].memberImage
+        // 서브스크립트로 구현해서 이와 같이 구현함 
+        // memberListManager.getMembersList()[IndexPath.row]
+        cell.memberNameLabel.text = memberListManager[indexPath.row].name
+        cell.addressLabel.text = memberListManager[indexPath.row].address
+        cell.selectionStyle = .none
+        */
+        
+        // 2번째 방법
+        /*
+         MyTableViewCell 파일에서 아래와 같은 코드를 구현했기 때문에
+         var member: Member? {
+             didSet {
+                 guard var member = member else { return }
+                 mainImageView.image = member.memberImage
+                 memberNameLabel.text = member.name
+                 addressLabel.text = member.address
+             }
+         }
+         */
+        // 저장속성에 멤버를 저장하면 셀에서 알아서 꺼내서 이미지, 레이블 표시하고 할 수 있는 것임
+        // 이방식이 좀더 고급스럽고 편한 방법임
+        
+        cell.member = memberListManager[indexPath.row]
+        cell.selectionStyle = .none
+        
+        return cell
+        
     }
     
     
