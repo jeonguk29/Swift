@@ -12,14 +12,46 @@ final class ViewController: UIViewController {
     
     // 테이블 뷰 생성
     private let tableView = UITableView()
-
+    
+    // MVC로 만들었으니까 비즈니스 로직에 접근 할수 있는 객체 생성
+    var memberListManager = MemberListManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        
+        view.backgroundColor = .white
+        setupDatas()
+        setupNaviBar()
+        setupTableView()
         setupTableViewConstraints()
         
     }
+    
+    func setupNaviBar() {
+        title = "회원 목록"
+        
+        // 네비게이션바 설정관련
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()  // 불투명으로
+        appearance.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .systemBlue
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        // 네비게이션바 오른쪽 상단 버튼 설정
+        //self.navigationItem.rightBarButtonItem = self.plusButton
+    }
+    
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.rowHeight = 60 // 셀의 크기 설정 
+    }
+    
+    func setupDatas(){
+        memberListManager.makeMembersListDatas() // 빈 배열을 만들지 않기위해 미리 한번 만들어주기
+        // 일반적으로는 서버에 요청
+    }
+    
     
     // 테이블 뷰의 오토 레이아웃 설정
     func setupTableViewConstraints(){
@@ -38,7 +70,8 @@ final class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return memberListManager.getMembersList().count
+        // 배열 개수로 몇개의 셀을 만들지 정의
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
