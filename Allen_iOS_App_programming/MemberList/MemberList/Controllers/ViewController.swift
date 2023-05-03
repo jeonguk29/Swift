@@ -44,8 +44,10 @@ final class ViewController: UIViewController {
     
     func setupTableView() {
         tableView.dataSource = self
-        tableView.rowHeight = 60 // 셀의 크기 설정
+        tableView.delegate = self
         
+        tableView.rowHeight = 60 // 셀의 크기 설정
+
         // 코드로 셀 등록시 이걸 꼭 해줘야함
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "MemberCell")
         // 타입 인스턴스 형태로 첫번째 매개변수를 넘겨 줘야함
@@ -73,7 +75,7 @@ final class ViewController: UIViewController {
 
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate{
+extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memberListManager.getMembersList().count
         // 배열 개수로 몇개의 셀을 만들지 정의
@@ -118,3 +120,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
 }
 
+// 셀 클릭시 DetailViewController로 이동 하기 위한 부분
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 다음화면으로 넘어가는 코드
+        let detailVC = DetailViewController()
+        
+        let array = memberListManager.getMembersList()
+        detailVC.member = array[indexPath.row]
+        
+        // 네비게이션 컨트롤러로 이동시킴
+        navigationController?.pushViewController(detailVC, animated: true)
+       
+    }
+ 
+}
