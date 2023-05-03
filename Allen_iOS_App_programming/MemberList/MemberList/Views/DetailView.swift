@@ -247,7 +247,7 @@ class DetailView: UIView {
         self.backgroundColor = .white
         setupStackView()
         setupNotification()
-        setupMemberIdTextField()
+        setupMemberIdTextField()  // 텍스트 필드 프로토콜 사용시 해당 대리자 설정 필요
     }
     
     required init?(coder: NSCoder) {// 뷰를 만들기 위한 생성자 구현시 필수 생성자 구현 필요
@@ -267,6 +267,7 @@ class DetailView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    // 텍스트 필드 프로토콜 사용시 대리자 설정 필요
     func setupMemberIdTextField() {
         memberIdTextField.delegate = self
     }
@@ -339,14 +340,20 @@ class DetailView: UIView {
     }
 }
 
+// ⭐️ 멤버 아이디를 변경 하는 순간 앱이 꺼져버림 그걸 방지하기 위해
+// UITextFieldDelegate를 채택하고
+// 멤버 아이디 변경 못하게 만들어줌
 //MARK: - 텍스트필드 델리게이트 구현
 
 extension DetailView: UITextFieldDelegate {
+    
+    // shouldChangeCharactersIn 메서드는 텍스트 필드에서 입력 될때마다 실행 될것임
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         // 멤버 아이디는 수정 못하도록 설정 (멤버아이디의 텍스트필드는 입력 안되도록 설정)
         if textField == memberIdTextField {
-            return false
+            return false // 지금 현제 입력되고 있는 텍스트 필드가 memberIdTextField면 수정 못하게 해줌
         }
         
         // 나머지 텍스트필드는 관계없이 설정 가능
