@@ -13,6 +13,11 @@ final class DetailViewController: UIViewController {
     
     private let detailView = DetailView()
     
+    //⭐️ 커스텀 델리게이트 3단계
+    weak var delegate: MemberDelegate? // MemberDelegate를 채택한 타입이 대리자가 될수 있음
+    //2단계에서 ViewController 확장으로 MemberDelegate를 채택했음
+    //⭐️ 커스텀 델리게이트 6단계 weak 키워드를 붙여 약한참조 
+
     var member: Member? // 멤버를 전화면에서 전달 받아야함
     
     
@@ -87,16 +92,17 @@ final class DetailViewController: UIViewController {
             Member(name: name, age: age, phone: phoneNumber, address: address)
             newMember.memberImage = detailView.mainImageView.image
             
-            // 1) 델리게이트 방식이 아닌 구현⭐️
-            let index = navigationController!.viewControllers.count - 2
-            // 전 화면에 접근하기 위함
-            let vc = navigationController?.viewControllers[index] as! ViewController
-            // 전 화면의 모델에 접근해서 멤버를 추가
-            vc.memberListManager.makeNewMember(newMember)
-            
+//            // 1) 델리게이트 방식이 아닌 구현⭐️
+//            let index = navigationController!.viewControllers.count - 2
+//            // 전 화면에 접근하기 위함
+//            let vc = navigationController?.viewControllers[index] as! ViewController
+//            // 전 화면의 모델에 접근해서 멤버를 추가
+//            vc.memberListManager.makeNewMember(newMember)
+//            
             
             // 2) 델리게이트 방식으로 구현⭐️
-            //delegate?.addNewMember(newMember)
+            //⭐️ 커스텀 델리게이트 8단계
+            delegate?.addNewMember(newMember)
             
             
         // [2] 멤버가 있다면 (멤버의 내용을 업데이트 하기 위한 설정)
@@ -119,17 +125,32 @@ final class DetailViewController: UIViewController {
              navigationController는 viewControllers 라는 속성에
              viewController들이 배열로 관리가 됨
              */
-            // 1) 델리게이트 방식이 아닌 구현⭐️
-            let index = navigationController!.viewControllers.count - 2 // 2가 들어있을 것임 뷰컨이랑, 디테일 뷰컨  그래서 현제 뷰컨에 접근 하기 위해 0으로 만들어줌
+//            // 1) 델리게이트 방식이 아닌 구현⭐️
+//            let index = navigationController!.viewControllers.count - 2 // 2가 들어있을 것임 뷰컨이랑, 디테일 뷰컨  그래서 현제 뷰컨에 접근 하기 위해 0으로 만들어줌
+//
+//            // 전 화면에 접근하기 위함
+//            let vc = navigationController?.viewControllers[index] as! ViewController
+//            // 전 화면의 모델에 접근해서 멤버를 업데이트
+//            vc.memberListManager.updateMemberInfo(index: memberId, member!)
+//            // 몇번째 인덱스를 업데이트 해야할지 상수에 담을값으로 넣어줌, 멤버도 전달
+//
+     
             
-            // 전 화면에 접근하기 위함
-            let vc = navigationController?.viewControllers[index] as! ViewController
-            // 전 화면의 모델에 접근해서 멤버를 업데이트
-            vc.memberListManager.updateMemberInfo(index: memberId, member!)
-            // 몇번째 인덱스를 업데이트 해야할지 상수에 담을값으로 넣어줌, 멤버도 전달
+            /*
+             커스텀 델리게이트를 사용해야 하는 이유
+             기존에 유저의 정보를 업데이트 하면 어떤 화면으로 갔다가 다시 돌아올때
+             override func viewWillAppear(_ animated: Bool) {
+             해당 메서드를 사용하여 업데이트를 함
+             이문제의 단점은 정보를 업데이트 하지 않고 회면을 뒤로 돌아가면 화면을 리프레쉬 한다는 단점이 있음
+             이것을 해결하고자 커스텀 델리게이트를 사용할 것임
+             */
+
             
-            // 델리게이트 방식으로 구현⭐️
-            //delegate?.update(index: memberId, member!)
+            // 2)델리게이트 방식으로 구현⭐️
+            //⭐️ 커스텀 델리게이트 8단계
+            delegate?.update(index: memberId, member!)
+            // 데리자한테 업데이트를 해 이런 방식으로 구현하려고 하는 것임
+            
         }
         
         // (일처리를 다한 후에) 전화면으로 돌아가기

@@ -34,14 +34,16 @@ final class ViewController: UIViewController {
         
     }
     
-    // 어떤 화면으로 갔다가 다시 돌아올때
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()// 테이블 뷰를 다시 그려줌
-        // 유저의 정보가 업데이트 되는 경우 등
-    }
-    
+    //⭐️ 커스텀 델리게이트 7단계 : 커스텀 델리게이트 패턴으로 구현해서 해당 메서드 사용할 필요가 없음
+
+//    // 어떤 화면으로 갔다가 다시 돌아올때
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        tableView.reloadData()// 테이블 뷰를 다시 그려줌
+//        // 유저의 정보가 업데이트 되는 경우 등
+//    }
+//
     func setupNaviBar() {
         title = "회원 목록"
         
@@ -93,9 +95,10 @@ final class ViewController: UIViewController {
     @objc func plusButtonTapped() {
         // 다음화면으로 이동 (멤버는 전달하지 않음)
         let detailVC = DetailViewController()
-        
+       
+        //⭐️ 커스텀 델리게이트 4단계
         // 다음 화면의 대리자 설정 (다음 화면의 대리자는 지금 현재의 뷰컨트롤러)
-        //detailVC.delegate = self
+        detailVC.delegate = self
         
         // 화면이동
         navigationController?.pushViewController(detailVC, animated: true)
@@ -156,7 +159,17 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 다음화면으로 넘어가는 코드
         let detailVC = DetailViewController()
-        
+       
+        //⭐️ 커스텀 델리게이트 4단계
+        detailVC.delegate = self // 넘어가기전 대라자가 뷰컨이 되도록 설정
+        // 이렇게 된다면 서로 강한 순환 참조 현상이 일어날 수 있음
+        /*
+         ViewController => detailVC 가리키고
+         DetailViewController.delegate => ViewController 를 가리킴
+         해결 방법은
+         DetailViewController.delegate 를 약한 참조를 통해서 가리키는 방법이 있음
+         
+         */
         let array = memberListManager.getMembersList()
         detailVC.member = array[indexPath.row]
         
@@ -165,4 +178,20 @@ extension ViewController: UITableViewDelegate {
        
     }
  
+}
+
+//⭐️ 커스텀 델리게이트 2단계
+extension ViewController: MemberDelegate{
+    func addNewMember(_ member: Member) {
+        memberListManager.makeNewMember(member)
+        // 멤버가 추가 된다면 이 모델이 가진 메서드를 실행 새로운 정보를 가진 멤버를 전달 하면서
+        tableView.reloadData()// 멤버가 추가 된다면 테이블 뷰를 업데이트
+    }
+    
+    func update(index: Int, _ member: Member) {
+        memberListManager.updateMemberInfo(index: index, member)
+        tableView.reloadData()
+    }
+    
+    
 }
