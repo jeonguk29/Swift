@@ -264,6 +264,18 @@ class DetailView: UIView {
         // 노티피케이션의 등록 ⭐️
         // (OS차원에서 어떤 노티피케이션이 발생하는지 이미 정해져 있음)
         NotificationCenter.default.addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+     
+    // 관찰을 할 객체가 누군이지 설정을 해줌(관찰자를 등록) 현제 이 객체 self로 설정
+    // 쉽게 키보드가 올라오면 해당 함수를 실행 시키겠다라는 것임
+        /*
+        이처럼 다양한 알림들을 애플이 지원을 해줌
+         UIResponder.keyboardDidShowNotification
+         . 다음 확인 해보면 다양한 알림들을 애플에서 미리 다 만들었음
+         화면 가로로 돌린다던지 등등
+         */
+        
+        // 키보드가 내려갈때
         NotificationCenter.default.addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
@@ -312,7 +324,8 @@ class DetailView: UIView {
     }
     
     //MARK: - 키보드가 나타날때와 내려갈때의 애니메이션 셋팅
-    
+    // 스택뷰안에 다 담겨있기 때문에 스택뷰가 살짝 올라가고 내려가게 만들면 됨
+    // 키보드가 올라오고 내려갈때 실행될 메서드들을 구현
     @objc func moveUpAction() {
         stackViewTopConstraint.constant = -20
         UIView.animate(withDuration: 0.2) {
@@ -327,16 +340,19 @@ class DetailView: UIView {
         }
     }
     
+    // 화면 터치하면 키보드 내려가게 하기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true)
     }
     
     //MARK: - 소멸자 구현
-    
+    // 옵저버 객체 관찰 객체를 없에기 위해 디테일 뷰 객체가 사라질때 실행되는 소멸자를 실행
     deinit {
         // 노티피케이션의 등록 해제 (해제안하면 계속 등록될 수 있음) ⭐️
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+     
     }
 }
 
