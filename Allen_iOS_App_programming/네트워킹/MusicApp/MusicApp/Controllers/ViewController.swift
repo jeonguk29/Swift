@@ -10,12 +10,12 @@ import UIKit
 final class ViewController: UIViewController {
 
     // 🍏 서치 컨트롤러 생성 ===> 네비게이션 아이템에 할당
-//    let searchController = UISearchController()
+    let searchController = UISearchController()
     
     // 🍎 서치 Results컨트롤러 ⭐️
     //let sear = UISearchController(searchResultsController: <#T##UIViewController?#>)
     
-    let searchController = UISearchController(searchResultsController: UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController)
+//    let searchController = UISearchController(searchResultsController: UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchResultViewController") as! SearchResultViewController)
     
     // 테이블 뷰 연결
     @IBOutlet weak var musicTableView: UITableView!
@@ -40,13 +40,13 @@ final class ViewController: UIViewController {
         navigationItem.searchController = searchController
         
         // 🍏 1) (단순)서치바의 사용
-        //searchController.searchBar.delegate = self
+        searchController.searchBar.delegate = self
+        // 서치바 사용 테이블뷰 사용과똑같이 델리게이트 설정 필요함
         
-        
-        // 🍎 2) 서치(결과)컨트롤러의 사용 (복잡한 구현 가능)
-        //     ==> 글자마다 검색 기능 + 새로운 화면을 보여주는 것도 가능
-        searchController.searchResultsUpdater = self
-        
+//        // 🍎 2) 서치(결과)컨트롤러의 사용 (복잡한 구현 가능)
+//        //     ==> 글자마다 검색 기능 + 새로운 화면을 보여주는 것도 가능
+//        searchController.searchResultsUpdater = self
+
         // 첫글자 대문자 설정 없애기
         searchController.searchBar.autocapitalizationType = .none
     }
@@ -148,53 +148,54 @@ extension ViewController: UITableViewDelegate {
 
 //MARK: - 🍏 (단순) 서치바 확장
 
-//extension ViewController: UISearchBarDelegate {
-//
+// 필수 메서드가 아니라 선택적 메서드들이 많이 있음
+extension ViewController: UISearchBarDelegate {
+
 //    // 유저가 글자를 입력하는 순간마다 호출되는 메서드
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 //
-//        print(searchText)
+//        print(searchText) // 서치바에서 글자 입력할때마다 전달 되서 출력 되는 것임
 //        // 다시 빈 배열로 만들기 ⭐️
-//        self.musicArrays = []
+//        self.musicArrays = [] // 글자 입력마다 새로 테이블을 그려야 하기 때문임
 //
 //        // 네트워킹 시작
 //        networkManager.fetchMusic(searchTerm: searchText) { result in
 //            switch result {
 //            case .success(let musicDatas):
-//                self.musicArrays = musicDatas
+//                self.musicArrays = musicDatas // 배열을 다시 만들고
 //                DispatchQueue.main.async {
-//                    self.musicTableView.reloadData()
+//                    self.musicTableView.reloadData() // 테이블을 리로드
 //                }
 //            case .failure(let error):
 //                print(error.localizedDescription)
 //            }
 //        }
 //    }
-//
-//    // 검색(Search) 버튼을 눌렀을때 호출되는 메서드
-////    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-////        guard let text = searchController.searchBar.text else {
-////            return
-////        }
-////        print(text)
-////        // 다시 빈 배열로 만들기 ⭐️
-////        self.musicArrays = []
-////
-////        // 네트워킹 시작
-////        networkManager.fetchMusic(searchTerm: text) { result in
-////            switch result {
-////            case .success(let musicDatas):
-////                self.musicArrays = musicDatas
-////                DispatchQueue.main.async {
-////                    self.musicTableView.reloadData()
-////                }
-////            case .failure(let error):
-////                print(error.localizedDescription)
-////            }
-////        }
-////        self.view.endEditing(true)
-////    }
-//}
+
+    // 검색(Search) 버튼을 눌렀을때 호출되는 메서드
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        print(text)
+        // 다시 빈 배열로 만들기 ⭐️
+        self.musicArrays = []
+
+        // 네트워킹 시작
+        networkManager.fetchMusic(searchTerm: text) { result in
+            switch result {
+            case .success(let musicDatas):
+                self.musicArrays = musicDatas
+                DispatchQueue.main.async {
+                    self.musicTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        self.view.endEditing(true)
+    }
+}
 
 
 //MARK: -  🍎 검색하는 동안 (새로운 화면을 보여주는) 복잡한 내용 구현 가능

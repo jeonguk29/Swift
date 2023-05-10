@@ -44,10 +44,11 @@ struct Music: Codable {
         // 서버에서 주는 형태 (ISO규약에 따른 문자열 형태)
         guard let isoDate = ISO8601DateFormatter().date(from: releaseDate ?? "") else {
             return ""
+            // 서버에서 releaseDate 이름으로 날라오면 날짜형으로 한번 변환 let isoDate: Date
         }
         let myFormatter = DateFormatter()
         myFormatter.dateFormat = "yyyy-MM-dd"
-        let dateString = myFormatter.string(from: isoDate)
+        let dateString = myFormatter.string(from: isoDate) // let isoDate: Date 타입을 한번 더 넣어줌 문자열화 하기 위해 
         return dateString
     }
 }
