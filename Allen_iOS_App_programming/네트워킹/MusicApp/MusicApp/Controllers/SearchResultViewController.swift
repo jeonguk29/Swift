@@ -12,7 +12,8 @@ final class SearchResultViewController: UIViewController {
     // 컬렉션뷰 (테이블뷰와 유사)
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // 컬렉션뷰의 레이아웃을 담당하는 객체
+    // 컬렉션뷰의 레이아웃을 담당하는 객체 ⭐️
+    // - 컬렉션 뷰의 형태 모든 레이아웃을 담당하는 객체임
     let flowLayout = UICollectionViewFlowLayout()
     
     // 네트워크 매니저 (싱글톤)
@@ -22,9 +23,10 @@ final class SearchResultViewController: UIViewController {
     var musicArrays: [Music] = []
     
     // (서치바에서) 검색을 위한 단어를 담는 변수 (전화면에서 전달받음)
+    // - 단어 전달 받으면 속성 감시자가 반응을 함 
     var searchTerm: String? {
         didSet {
-            setupDatas()
+            setupDatas() // 단어 전달 받을때 마다 네트워킹 작업으로 검색함
         }
     }
     
@@ -43,21 +45,36 @@ final class SearchResultViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
+        
         // 컬렉션뷰의 스크롤 방향 설정
+        // - 컬렉션뷰는 세로, 가로 다 스크롤이 가능 하기 때문에 세로로 수직으로 스크롤하게 만든 것임
         flowLayout.scrollDirection = .vertical
         
+        // Name Space 를 사용하여 지정 했음 기획자, 디자이너가 간격 수정해달라고 할때 번거로움을 방지하기 위함
+        
+        // UIScreen.main.bounds.width 는 아이폰 스크린 너비 : 현제 5개의 컬렉션 뷰 보여줄때
+        // 4개의 선 필요함 4개의 컬랙션 뷰면 3개의 선 필요하고 그걸 그려주기 위한 코드임
         let collectionCellWidth = (UIScreen.main.bounds.width - CVCell.spacingWitdh * (CVCell.cellColumns - 1)) / CVCell.cellColumns
         
+        // 아이템 사이즈 크기 설정
         flowLayout.itemSize = CGSize(width: collectionCellWidth, height: collectionCellWidth)
+        
         // 아이템 사이 간격 설정
         flowLayout.minimumInteritemSpacing = CVCell.spacingWitdh
+        
         // 아이템 위아래 사이 간격 설정
         flowLayout.minimumLineSpacing = CVCell.spacingWitdh
         
-        // 컬렉션뷰의 속성에 할당
+        // 컬렉션뷰의 속성에 할당 ⭐️ 이렇게 할당 해주는게 핵심임
         collectionView.collectionViewLayout = flowLayout
         
     }
+    
+    /*
+     컬랙션 뷰에서 중요한 것은 UICollectionViewFlowLayout() 라는 레이아웃을 담당하는 객체가 따로 있다.
+     이 객체를 가지고 설정을 해줘야지만 컬랙션 뷰를 우리가 원하는 형태로 주무를수 있음
+     
+     */
     
     // 데이터 셋업
     func setupDatas() {
@@ -86,6 +103,7 @@ final class SearchResultViewController: UIViewController {
     
 }
 
+// 사용하기 위해 프로토콜 채택 컬렉션에서 로우는 아이템이라고 부름
 extension SearchResultViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return musicArrays.count
