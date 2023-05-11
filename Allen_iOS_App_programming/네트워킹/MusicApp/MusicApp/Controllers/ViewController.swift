@@ -99,6 +99,20 @@ final class ViewController: UIViewController {
     }
 }
 
+
+/*
+ 😍
+ 사실 우리가 네트워킹 작업할때
+ 이미지까지 한번에 내려주는게 아니고
+ 
+ "artworkUrl100": "https://is3-ssl.mzstatic.com/image/thumb/Music114/v4/f9/a6/12/f9a6122f-f004-de5a-f9cb-a6477220bdf9/859756147879_cover.jpg/100x100bb.jpg",
+ 
+ 사실은 이미지를 가지고 있는 URL을 내려주는 것임 그러면 사실 어떤일을 해야하냐면 이 URL을 가지고 다시 네트워킹을 통해 데이터를 받아 와야함
+ 그래야 이미지 데이터를 받을 수 있고 사용할 수 있는 것임 셀에사 이미지 표시하는건 우선적으로 url을 받는 것임
+ */
+
+
+
 // 테이블 뷰 프로토콜 채택후 필수 메서드 구현
 extension ViewController: UITableViewDataSource {
     
@@ -108,7 +122,7 @@ extension ViewController: UITableViewDataSource {
         return self.musicArrays.count
     }
     
-    // 테이브 뷰 셀을 어떻게 그릴건지
+    // 테이블 뷰 셀을 어떻게 그릴건지
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = musicTableView.dequeueReusableCell(withIdentifier: Cell.musicCellIdentifier, for: indexPath) as! MusicCell
         /* ⭐️⭐️ 
@@ -118,8 +132,21 @@ extension ViewController: UITableViewDataSource {
          */
 
         
-        cell.imageUrl = musicArrays[indexPath.row].imageUrl
+ 
+        // 왜? 아래와 같이 설계를 해야할까?
+        cell.imageUrl = musicArrays[indexPath.row].imageUrl // 😍 URL을 넘겨받음
+        /* 비동기 코드를 넣지 않음
         
+         imageUrl를 가지고 네트워크 통신 하는 비동기 코드를 만들어 서버에 요청해 데이터를 받아
+         이미지로 변환 하고 그걸 셀에 삽입 하는 코드로 만들면 테이블 뷰를 빠르게 스크롤 할때
+         이미지들이 반드시 잘못 표시되는 상황이 일어날 것임
+         
+         셀에 표시하는 일들을 구현할때 오래걸리는 작업을 전달하면 안됨
+         ex 이미지 표시를 위한 비동기 작업
+         
+         여기서는 이미지 url만 전달하고 셀에서 직접적으로 네트워크 통신을해 이미지를 로드하는게 좋음
+         그래야 셀 내부에서 url을 확인 할 수 있는 코드도 넣을수 있는 것임
+         */
         cell.songNameLabel.text = musicArrays[indexPath.row].songName
         cell.artistNameLabel.text = musicArrays[indexPath.row].artistName
         cell.albumNameLabel.text = musicArrays[indexPath.row].albumName
@@ -128,6 +155,8 @@ extension ViewController: UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+    
+    
 }
 
 /*
@@ -218,3 +247,6 @@ extension ViewController: UISearchResultsUpdating {
         // - 서치바에 글자 입력하면 searchController.searchBar.text 여기로 전달 될 것임 
     }
 }
+
+
+
