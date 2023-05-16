@@ -9,6 +9,7 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
+    // 색상을 바꾸기 위해 버튼을 하나하나 구현 해둠
     @IBOutlet weak var redButton: UIButton!
     @IBOutlet weak var greenButton: UIButton!
     @IBOutlet weak var blueButton: UIButton!
@@ -28,6 +29,7 @@ final class DetailViewController: UIViewController {
     let toDoManager = CoreDataManager.shared
     
     var toDoData: ToDoData? {
+        // 데이터 전달되면 아래와 같은 값이 설정됨 기본색상은 1번 빨간색
         didSet {
             temporaryNum = toDoData?.color
         }
@@ -74,6 +76,7 @@ final class DetailViewController: UIViewController {
             
             mainTextView.text = "텍스트를 여기에 입력하세요."
             mainTextView.textColor = .lightGray
+            saveButton.setTitle("SAVE", for: .normal)
             setupColorTheme(color: .red)
         }
         setupColorButton(num: temporaryNum ?? 1)
@@ -83,6 +86,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // 모든 버튼에 설정 변경
+        // - 배열로 버튼들을 담으면 forEach 같은 고차함수를 사용할 수 있는 장점이 있음
         buttons.forEach { button in
             button.clipsToBounds = true
             button.layer.cornerRadius = button.bounds.height / 2
@@ -93,6 +97,7 @@ final class DetailViewController: UIViewController {
         // 임시숫자 저장
         self.temporaryNum = Int64(sender.tag)
         
+        // 태그 숫자를 기준으로 백그라운드, 버튼 색상을 설정함 
         let color = MyColor(rawValue: Int64(sender.tag))
         setupColorTheme(color: color)
         

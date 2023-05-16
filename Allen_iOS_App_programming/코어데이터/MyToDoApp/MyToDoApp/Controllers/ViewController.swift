@@ -61,7 +61,7 @@ extension ViewController: UITableViewDataSource {
         cell.toDoData = toDoData[indexPath.row]
         
         
-        // 함수를 변수에 전달 하는 코드가 필요한데 이렇게 구현 하는 것임 
+        // 함수를 변수에 전달 하는 코드가 필요한데 이렇게 구현 하는 것임
         // 셀위에 있는 버튼이 눌렸을때 (뷰컨트롤러에서) 어떤 행동을 하기 위해서 클로저 전달
         cell.updateButtonPressed = { [weak self] (senderCell) in
             // 뷰컨트롤러에 있는 세그웨이의 실행

@@ -6,9 +6,11 @@
 //
 
 import UIKit
-
+// UIColor(hexString: "#EFD9D4") 코드로 값을 설정 할때
+// UIColor 는 애플이 만든 프레임 워크 타입이니까 hexString 라는 것을 직접 만들어 즉 확장을 통해 설정 하는 것임
 extension UIColor {
 
+    // - 편의 생성자로 구현 
     // Hex String -> UIColor
     convenience init(hexString: String) {
         let hexString = hexString.trimmingCharacters(in: .whitespacesAndNewlines)

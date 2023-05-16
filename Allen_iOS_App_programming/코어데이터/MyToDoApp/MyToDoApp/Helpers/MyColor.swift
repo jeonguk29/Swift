@@ -6,13 +6,15 @@
 //
 
 import UIKit
-
+// 열거형의 원시값으로 값을 설정했는데 코어 데이터 저장할때 Int64 로 저장 하게 해서 동일 자료형으로 저장하게 함
 enum MyColor: Int64 {
     case red    = 1
     case green  = 2
     case blue   = 3
     case purple = 4
     
+    // - backgoundColor 계산 속성(메서드임)으로 만들었음
+    // - self 열거형 자체임
     var backgoundColor: UIColor {
         switch self {
         case .red:
