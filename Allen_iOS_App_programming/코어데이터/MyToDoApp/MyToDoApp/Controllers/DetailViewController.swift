@@ -150,6 +150,7 @@ final class DetailViewController: UIViewController {
             // 텍스트뷰에 저장되어 있는 메세지
             toDoData.memoText = mainTextView.text
             toDoData.color = temporaryNum ?? 1
+            // 코어데이터 매니저한테 업데이트 시키기
             toDoManager.updateToDo(newToDoData: toDoData) {
                 print("업데이트 완료")
                 // 다시 전화면으로 돌아가기
@@ -157,6 +158,7 @@ final class DetailViewController: UIViewController {
             }
             
         // 기존데이터가 없을때 ===> 새로운 데이터 생성
+            // 코어데이터 매니저한테 저장시키기
         } else {
             let memoText = mainTextView.text
             toDoManager.saveToDoData(toDoText: memoText, colorInt: temporaryNum ?? 1) {
