@@ -76,6 +76,8 @@ extension ViewController: UITableViewDataSource {
         cell.music = music
         
         // (델리게이트 말고) 클로저 방식을 활용하는 것도 가능 ⭐️⭐️
+        // - MusicCell의 saveButtonPressed로 클로저 전달
+        // - 저장 여부에 따라 다른 alert 메서드를 실행
         cell.saveButtonPressed = { [weak self] (senderCell, isSaved) in
             guard let self = self else { return }
             // 저장이 안되어 있던 것이면

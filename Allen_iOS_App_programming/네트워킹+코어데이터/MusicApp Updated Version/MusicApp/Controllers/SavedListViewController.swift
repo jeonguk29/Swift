@@ -55,6 +55,7 @@ extension SavedListViewController: UITableViewDataSource {
         cell.musicSaved = musicSaved
         
         // (어짜피 다 저장되어 있으니) 저장을 없앨 것인지 얼럿창 띄우기
+        // - 두번째 탭은 하트 버튼이 이미 다 눌려있음 그래서 다시 누르면 지울 것인지 확인을 해야함
         cell.saveButtonPressed = { [weak self] (senderCell) in
             guard let self = self else { return }
             self.makeRemoveCheckAlert { okAction in
@@ -72,6 +73,7 @@ extension SavedListViewController: UITableViewDataSource {
         }
         
         // 수정관련 얼럿창 띄우기
+        // - 업데이트 버튼을 눌러서 이전에 저장한 텍스트 데이터 업데이트 하게 만듬
         cell.updateButtonPressed = { [weak self] (senderCell, messege) in
             guard let self = self else { return }
             self.makeMessegeAlert(myMessege: messege) { updatedMessege, okAction in
