@@ -49,7 +49,7 @@ final class MusicManager {
     // (기본 단어로) 데이터 셋업하기
     func setupDatasFromAPI(completion: @escaping () -> Void) {
         print("시작")
-        getDatasFromAPI(with: "jazz") {
+        getDatasFromAPI(with: "Kpop") {
             completion()
         }
     }
