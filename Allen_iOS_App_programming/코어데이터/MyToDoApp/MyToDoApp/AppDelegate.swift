@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
+    // - 앱델리게이트 내부에 영구 컨테이너(메모리에 올라오는 녀석임)
+    // - 지연 저장 속성으로 선언 되어있음 클로저 형태로 실행하는 구조임
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -40,6 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "MyToDoApp")
+        
+        // - 영구 저장소를 불러오는 함수 중간에 에러 발생시 앱 종료
+        // 잘불러오면 컨테이너에 담음
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -64,7 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 임시저장소의 내용을 저장하는 메서드 (변화가 있다면 ===> 저장)
     func saveContext() {
         let context = persistentContainer.viewContext
+        // 컨테이너 내부에 임시저장소가 있다고 했음 현제 임시저장소를 변수에 담는 것임
         if context.hasChanges {
+            // 임시저장소에 내용의 변화가 있다면 내용을 저장하겠다는 뜻
+            // 오래걸리는 작업이기 때문에 변화가 있다면 저장 하겠다는 것임
             do {
                 try context.save()
             } catch {

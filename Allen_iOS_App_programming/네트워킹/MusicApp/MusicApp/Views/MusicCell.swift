@@ -52,34 +52,6 @@ final class MusicCell: UITableViewCell {
         // 현재 문자열과              서버에서 받아온 문자열을 옵셔널 바인딩 : 아래서 확인 하는 작업이 있기 때문
         
         
-        //😍 원래는 이렇게 사용하는게 정석적인 구현임
-    
-//               // 2. URL 세션사용
-//        guard let url = URL(string: urlString) else { return  }
-//
-//        let session = URLSession(configuration: .default)
-//
-//               // 3. 이미지 받아오기
-//        let task = session.dataTask(with: url) { (data, response, error) in
-//                if error != nil {
-//                    print(error!)
-//
-//                    return
-//                }
-//
-//                guard let safeData = data else {
-//
-//                    return
-//                }
-//
-//                DispatchQueue.main.async {
-//                    self.mainImageView.image = UIImage(data: safeData)
-//                }
-//
-//            }
-//            task.resume()
-//
-        
         //😍 또 다른 방법
         
         DispatchQueue.global().async {
@@ -105,12 +77,5 @@ final class MusicCell: UITableViewCell {
         }
     }
     
-    /*
-     셀에서도 잘못된 일이 일어날수 있음 아무리 imageUrl를 받아 가지고 있다고 하더라도
-     imageUrl 를 서버에 요청한다고 했을때 테이블 뷰 빠르게 스크롤 하면
-     본질적으로 네트워크 작업이 오래걸리기 때문에 셀을 재사용하는 문제가 여전히 남아있음
-     
-     그래서 셀을 빠르게 내릴때 현재 imageUrl 이랑 서버에서 가져온 imageUrl를 비교해서 같은지 판단하는
-     코드를 넣어줘야함 빠르게 셀이 내려가더라도 올바른 이미지 표시를 위해
-     */
+   
 }
